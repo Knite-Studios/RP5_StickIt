@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     private CharacterController controller;
     private Animator animator;
+    private float crouchWalk = 0f;
     private AudioSource audioSource;
     private Vector3 moveDirection = Vector3.zero;
     private bool isCrouching = false;
@@ -54,21 +55,13 @@ public class PlayerMovement : MonoBehaviour
             transform.forward = moveDirection;
 
             // Handle movement animations and SFX
-            animator.SetFloat("Horizontal", horizontal);
-            animator.SetFloat("Vertical", vertical);
-
-            if (speed == runSpeed)
-            {
-                PlaySFX(runSFX);
-            }
-            else if (speed == walkSpeed)
-            {
-                PlaySFX(walkSFX);
-            }
+            HandleMovementAnimationsAndSFX(speed);
         }
         else
         {
-            animator.SetFloat("Move", 0);
+            animator.SetBool("isMoving", false);
+            crouchWalk = 0f;
+            animator.SetFloat("crouching", crouchWalk);
         }
     }
 
@@ -116,6 +109,20 @@ public class PlayerMovement : MonoBehaviour
         // Check for exit interaction
     }
 
+    private void HandleMovementAnimationsAndSFX(float speed)
+    {
+        animator.SetBool("isMoving", true);
+        crouchWalk = 1f;
+        animator.SetFloat("crouching", crouchWalk);
+        if (speed == runSpeed)
+        {
+            PlaySFX(runSFX);
+        }
+        else if (speed == walkSpeed)
+        {
+            PlaySFX(walkSFX);
+        }
+    }
 
     private void PlaySFX(AudioClip clip)
     {
@@ -125,5 +132,4 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // Additional methods for AI interaction, crop damage, etc.
 }
