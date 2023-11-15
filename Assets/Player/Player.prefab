@@ -1217,6 +1217,8 @@ GameObject:
   - component: {fileID: 8571378406645497549}
   - component: {fileID: 4354864977514040808}
   - component: {fileID: 1829054807060207855}
+  - component: {fileID: 3158481315420178650}
+  - component: {fileID: 4922865011262352777}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1259,12 +1261,12 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3123346704032824845}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 21d97aaeb20e40243acacd9096c86cec, type: 3}
   m_Controller: {fileID: 9100000, guid: 7c91796869a217c4394fc1f141839115, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -1283,9 +1285,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.009692667
-  m_Height: 0.080698095
+  m_Height: 0.08518101
   m_Direction: 1
-  m_Center: {x: 0, y: 0.040112358, z: 0}
+  m_Center: {x: 0, y: 0.037758548, z: 0}
 --- !u!54 &1829054807060207855
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1302,6 +1304,50 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 32
   m_CollisionDetection: 0
+--- !u!143 &3158481315420178650
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3123346704032824845}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 0.08518101
+  m_Radius: 0.009692667
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.03775855, z: 0}
+--- !u!114 &4922865011262352777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3123346704032824845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d205057b0b22934ea8250cc94c3367b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 2
+  runSpeed: 5
+  crouchSpeed: 1
+  walkSFX: {fileID: 0}
+  runSFX: {fileID: 0}
+  crouchSFX: {fileID: 0}
+  attackSFX: {fileID: 0}
+  interactSFX: {fileID: 0}
+  cropLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  exitLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &3483902087677850583
 GameObject:
   m_ObjectHideFlags: 0

@@ -54,11 +54,21 @@ public class PlayerMovement : MonoBehaviour
             transform.forward = moveDirection;
 
             // Handle movement animations and SFX
-            HandleMovementAnimationsAndSFX(speed);
+            animator.SetFloat("Horizontal", horizontal);
+            animator.SetFloat("Vertical", vertical);
+
+            if (speed == runSpeed)
+            {
+                PlaySFX(runSFX);
+            }
+            else if (speed == walkSpeed)
+            {
+                PlaySFX(walkSFX);
+            }
         }
         else
         {
-            animator.SetBool("isMoving", false);
+            animator.SetFloat("Move", 0);
         }
     }
 
@@ -106,18 +116,6 @@ public class PlayerMovement : MonoBehaviour
         // Check for exit interaction
     }
 
-    private void HandleMovementAnimationsAndSFX(float speed)
-    {
-        animator.SetBool("isMoving", true);
-        if (speed == runSpeed)
-        {
-            PlaySFX(runSFX);
-        }
-        else if (speed == walkSpeed)
-        {
-            PlaySFX(walkSFX);
-        }
-    }
 
     private void PlaySFX(AudioClip clip)
     {
