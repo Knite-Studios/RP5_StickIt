@@ -25,7 +25,7 @@ public class StaffAI : MonoBehaviour
     private Vector3 lastHeardSoundPosition;
     private float lastDetectionTime = 0f;
     public float hearingRange = 15f;
-    public float scarecrowViewRange = 10f; 
+    public float scarecrowViewRange = 10f;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -44,10 +44,14 @@ public class StaffAI : MonoBehaviour
         if (isChasing)
         {
             ChasePlayer();
+            animator.SetBool("Move", false);
+
         }
 
         if (isInvestigating)
         {
+            animator.SetBool("Move", false);
+
             InvestigateSound();
         }
 
@@ -63,7 +67,7 @@ public class StaffAI : MonoBehaviour
     {
         if (patrolPoints.Length == 0)
             return;
-
+        animator.SetBool("Move", true);
         agent.destination = patrolPoints[currentPatrolIndex].position;
         currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
     }
@@ -188,7 +192,8 @@ public class StaffAI : MonoBehaviour
 
     private void CapturePlayer()
     {
-        // Implement capture logic
+        
+     // Implement capture logic
         GameManager.Instance.GameOver();
         animator.SetTrigger("Dance");
 
@@ -223,6 +228,7 @@ public class StaffAI : MonoBehaviour
             if (fatigue >= maxFatigue)
             {
                 StartResting();
+
             }
         }
         else if (isResting)
