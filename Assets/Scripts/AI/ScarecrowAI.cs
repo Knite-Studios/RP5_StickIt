@@ -7,21 +7,41 @@ public class ScarecrowAI : MonoBehaviour
     public float detectionRadius = 5f;
     public float viewAngle = 110f; // FOV angle
     public LayerMask playerLayer;
-    public Light detectionLight;
+    public AudioClip alertSFX;
+    public float rotationSpeed = 30f; // Degrees per second
+
+    private Light detectionLight;
+    private AudioSource audioSource;
+    private Animator animator;
+    private bool isAlerted = false;
 
     void Start()
     {
+        detectionLight = GetComponentInChildren<Light>();
+        audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
         detectionLight.color = Color.red;
     }
 
     void Update()
     {
-        DetectPlayer();
+        if (!isAlerted)
+        {
+            RotateScarecrow();
+            DetectPlayer();
+        }
+    }
+
+    private void RotateScarecrow()
+    {
+        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
     }
 
     private void DetectPlayer()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null) return;
+
         Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
         float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
 
@@ -32,20 +52,26 @@ public class ScarecrowAI : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Player"))
                 {
-                    HandlePlayerDetection(player);
+                    HandlePlayerDetection();
                 }
             }
         }
     }
 
-    private void HandlePlayerDetection(GameObject player)
+    private void HandlePlayerDetection()
     {
-        GameManager.Instance.GameOver();
-        // Trigger player's give up animation
-        player.GetComponent<Animator>().SetTrigger("GiveUp");
-
-        // Start alarm lights across the farm
+        isAlerted = true;
+        animator.SetTrigger("Alert");
+        PlayAlertSFX();
         StartAlarmLights();
+    }
+
+    private void PlayAlertSFX()
+    {
+        if (alertSFX != null)
+        {
+            audioSource.PlayOneShot(alertSFX);
+        }
     }
 
     private void StartAlarmLights()
@@ -54,9 +80,7 @@ public class ScarecrowAI : MonoBehaviour
         {
             if (light.CompareTag("AlarmLight"))
             {
-                // Start alarm light effect, e.g., changing color or blinking
                 light.color = Color.red; // Example: Change color to red
-                // Add more effects as needed
             }
         }
     }
