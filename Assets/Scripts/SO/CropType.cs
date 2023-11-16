@@ -8,5 +8,4 @@ public class CropType : ScriptableObject
     public int healthPoints;
     public int scoreValue;
     public AudioClip damageSFX;
-    public GameObject cropDropPrefab;
 }
