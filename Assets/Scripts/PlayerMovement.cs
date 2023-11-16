@@ -17,17 +17,18 @@ namespace Percy.EnemyVision
 
         [Header("Hide")]
         public bool can_hide = true;
-        public KeyCode hideKey = KeyCode.LeftControl;
-
-        [Header("Opacity Settings")]
-        [SerializeField] private float hiddenOpacity = 0.7f;
+        public KeyCode hideKey = KeyCode.LeftShift;
+        private bool isHiding = false;
 
         [Header("Sound Effects")]
         [SerializeField] private AudioClip walkSFX;
         [SerializeField] private AudioClip runSFX;
         [SerializeField] private AudioClip crouchSFX;
         [SerializeField] private AudioClip attackSFX;
-        [SerializeField] private AudioClip interactSFX;
+
+        [Header("Attack")]
+        [SerializeField] private Collider attackCollider;
+        private bool isAttacking = false;
 
         private Vector3 current_move = Vector3.zero;
         private Vector3 current_face = Vector3.forward;
@@ -44,6 +45,12 @@ namespace Percy.EnemyVision
             collide = GetComponentInChildren<Collider>();
             vision_target = GetComponent<VisionTarget>();
             audioSource = GetComponent<AudioSource>();
+            attackCollider.enabled = false;
+        }
+
+        void Update()
+        {
+            HandleInput();
         }
 
         void FixedUpdate()
@@ -58,20 +65,9 @@ namespace Percy.EnemyVision
             if (Input.GetKey(KeyCode.S))
                 move_dir += Vector3.back;
 
-            bool isHiding = can_hide && Input.GetKey(hideKey);
-            if (vision_target)
-                vision_target.visible = !isHiding;
-            if (collide)
-                collide.enabled = !isHiding;
-
             if (isHiding)
             {
                 move_dir = Vector3.zero;
-                SetOpacity(hiddenOpacity);
-            }
-            else
-            {
-                SetOpacity(1f);
             }
 
             // Move
@@ -96,26 +92,31 @@ namespace Percy.EnemyVision
                 transform.rotation = reachedRotation;
             }
 
-            // Handle movement animations and SFX
             HandleMovementAnimationsAndSFX();
+        }
 
-            // Additional Inputs
-            HandleAdditionalInputs();
+        private void HandleInput()
+        {
+            if (Input.GetKeyDown(hideKey))
+            {
+                isHiding = !isHiding;
+                animator.SetBool("isCrouching", isHiding);
+                if (vision_target)
+                    vision_target.visible = !isHiding;
+                if (collide)
+                    collide.enabled = !isHiding;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space) && !isAttacking)
+            {
+                Attack();
+            }
         }
 
         public bool CheckIfGrounded()
         {
             Vector3 origin = transform.position + Vector3.up * ground_dist * 0.5f;
-            return RaycastObstacle(origin + Vector3.forward * 0.5f, Vector3.down * ground_dist)
-                || RaycastObstacle(origin + Vector3.back * 0.5f, Vector3.down * ground_dist)
-                || RaycastObstacle(origin + Vector3.left * 0.5f, Vector3.down * ground_dist)
-                || RaycastObstacle(origin + Vector3.right * 0.5f, Vector3.down * ground_dist);
-        }
-
-        public bool RaycastObstacle(Vector3 origin, Vector3 dir)
-        {
-            RaycastHit hit;
-            return Physics.Raycast(new Ray(origin, dir.normalized), out hit, dir.magnitude, ground_mask.value);
+            return Physics.Raycast(origin, Vector3.down, ground_dist, ground_mask);
         }
 
         private void HandleMovementAnimationsAndSFX()
@@ -128,56 +129,31 @@ namespace Percy.EnemyVision
             }
         }
 
-        private void HandleAdditionalInputs()
-        {
-            // Crouch
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                animator.SetBool("isCrouching", !animator.GetBool("isCrouching"));
-                PlaySFX(crouchSFX);
-            }
-
-            // Attack
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Attack();
-            }
-
-            // Interact
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                animator.SetTrigger("interact");
-                PlaySFX(interactSFX);
-            }
-        }
-
         private void Attack()
         {
+            isAttacking = true;
             animator.SetTrigger("attack");
             PlaySFX(attackSFX);
-
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 1f))
-            {
-                if (hit.collider.CompareTag("Crop"))
-                {
-                    Crop crop = hit.collider.GetComponent<Crop>();
-                    if (crop != null)
-                    {
-                        crop.TakeDamage(1); // Assuming each attack deals 1 damage
-                    }
-                }
-            }
+            StartCoroutine(EnableAttackCollider());
         }
 
-        private void SetOpacity(float opacity)
+        private IEnumerator EnableAttackCollider()
         {
-            Renderer renderer = GetComponent<Renderer>();
-            if (renderer != null)
+            attackCollider.enabled = true;
+            yield return new WaitForSeconds(0.5f);
+            attackCollider.enabled = false;
+            isAttacking = false;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (isAttacking && other.CompareTag("Crop"))
             {
-                Color color = renderer.material.color;
-                color.a = opacity;
-                renderer.material.color = color;
+                Crop crop = other.GetComponent<Crop>();
+                if (crop != null)
+                {
+                    crop.TakeDamage(1);
+                }
             }
         }
 
@@ -185,7 +161,7 @@ namespace Percy.EnemyVision
         {
             if (clip != null && !audioSource.isPlaying)
             {
-                audioSource.PlayOneShot(clip);
+                audioSource.PlayOneShot(clip);  
             }
         }
     }

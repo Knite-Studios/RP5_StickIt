@@ -3035,8 +3035,8 @@ GameObject:
   - component: {fileID: 2415186579083703951}
   - component: {fileID: 2546091278774939855}
   - component: {fileID: 7716995773801317802}
-  - component: {fileID: 2745948528419232163}
   - component: {fileID: 3094536714692899405}
+  - component: {fileID: 2454787977825821641}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3122,33 +3122,6 @@ CapsuleCollider:
   m_Height: 0.080698095
   m_Direction: 1
   m_Center: {x: 0, y: 0.040112358, z: 0}
---- !u!114 &2745948528419232163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8948523945026303567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d205057b0b22934ea8250cc94c3367b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  move_speed: 8
-  move_accel: 10
-  rotate_speed: 250
-  gravity: 5
-  ground_dist: 0.3
-  ground_mask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  can_hide: 1
-  hide_key: 304
-  walkSFX: {fileID: 0}
-  runSFX: {fileID: 0}
-  crouchSFX: {fileID: 0}
-  attackSFX: {fileID: 0}
-  interactSFX: {fileID: 0}
 --- !u!114 &3094536714692899405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3162,6 +3135,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visible: 1
+--- !u!114 &2454787977825821641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8948523945026303567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d205057b0b22934ea8250cc94c3367b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move_speed: 7
+  move_accel: 40
+  rotate_speed: 150
+  gravity: 2
+  ground_dist: 0.2
+  ground_mask:
+    serializedVersion: 2
+    m_Bits: 0
+  can_hide: 1
+  hideKey: 306
+  hiddenOpacity: 0.7
+  walkSFX: {fileID: 0}
+  runSFX: {fileID: 0}
+  crouchSFX: {fileID: 0}
+  attackSFX: {fileID: 0}
+  interactSFX: {fileID: 0}
 --- !u!1 &9115439807494595179
 GameObject:
   m_ObjectHideFlags: 0
