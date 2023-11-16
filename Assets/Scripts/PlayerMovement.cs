@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Percy.EnemyVision //
+namespace Percy.EnemyVision 
 {
     public class PlayerMovement : MonoBehaviour
     {

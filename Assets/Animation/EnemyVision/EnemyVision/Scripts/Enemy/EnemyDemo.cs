@@ -39,7 +39,7 @@ namespace Percy.EnemyVision
         private void OnAlert(Vector3 target)
         {
             if (exclama_prefab != null)
-                Instantiate(exclama_prefab, transform.position + Vector3.up * 2f, Quaternion.identity);
+                Instantiate(exclama_prefab, transform.position + Vector3.up * 3f, Quaternion.identity); 
             if (animator != null)
                 animator.SetTrigger("Surprised");
         }
