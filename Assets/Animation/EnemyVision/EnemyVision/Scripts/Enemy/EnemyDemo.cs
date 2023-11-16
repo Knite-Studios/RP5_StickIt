@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace IndieMarc.EnemyVision
+namespace Percy.EnemyVision
 {
-    /// <summary>
-    /// Demo script on how to link animations and use Enemy events
-    /// </summary>
 
     [RequireComponent(typeof(EnemyVision))]
     public class EnemyDemo : MonoBehaviour

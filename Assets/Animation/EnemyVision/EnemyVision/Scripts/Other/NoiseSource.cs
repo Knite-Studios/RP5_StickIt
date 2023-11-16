@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace IndieMarc.EnemyVision
+namespace Percy.EnemyVision
 {
     /// <summary>
     /// Call this manually to generate noise

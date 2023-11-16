@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 691549329132583032}
   - component: {fileID: 701624003505257800}
   m_Layer: 0
-  m_Name: SM_Prop_Ranch_Sign_01
+  m_Name: Ranch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace IndieMarc.EnemyVision
+namespace Percy.EnemyVision
 {
-    /// <summary>
-    /// Manages enemy detection of the player, will also spawn a VisionCone and change the state of Enemy.cs based on what is seen
-    /// </summary>
 
     public class EnemyVision : MonoBehaviour
     {

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8773899014349904094}
   - component: {fileID: 8783861772374327854}
   m_Layer: 0
-  m_Name: SM_Prop_Scarecrow_01
+  m_Name: Scarecrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

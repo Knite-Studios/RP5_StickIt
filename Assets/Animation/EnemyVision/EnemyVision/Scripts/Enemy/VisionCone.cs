@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace IndieMarc.EnemyVision
+namespace Percy.EnemyVision
 {
-    /// <summary>
-    /// Generates and updates the vision cone displayed
-    /// </summary>
-    
     public class VisionCone : MonoBehaviour
     {
         [Header("Linked Enemy")]

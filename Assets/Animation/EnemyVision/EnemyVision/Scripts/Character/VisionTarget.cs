@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace IndieMarc.EnemyVision
+namespace Percy.EnemyVision
 {
-    /// <summary>
-    /// Put this script on your main character to make it detectable by enemies
-    /// </summary>
 
     public class VisionTarget : MonoBehaviour
     {

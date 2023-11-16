@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.AI;
 
-namespace IndieMarc.EnemyVision
+namespace Percy.EnemyVision
 {
     public enum EnemyState
     {

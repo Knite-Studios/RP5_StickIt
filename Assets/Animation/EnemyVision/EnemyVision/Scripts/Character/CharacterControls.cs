@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace IndieMarc.EnemyVision
+namespace Percy.EnemyVision
 {
-    /// <summary>
-    /// Demo script to move and control the player character
-    /// </summary>
-    
     public class CharacterControls : MonoBehaviour
     {
         public float move_speed = 7f;

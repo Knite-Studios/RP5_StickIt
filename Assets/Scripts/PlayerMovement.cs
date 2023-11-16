@@ -2,134 +2,162 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
-[RequireComponent(typeof(Animator))]
-public class PlayerMovement : MonoBehaviour
+namespace Percy.EnemyVision //
 {
-    [Header("Movement Settings")]
-    [SerializeField] private float walkSpeed = 2.0f;
-    [SerializeField] private float runSpeed = 5.0f;
-    [SerializeField] private float crouchSpeed = 1.0f;
-
-    [Header("Sound Effects")]
-    [SerializeField] private AudioClip walkSFX;
-    [SerializeField] private AudioClip runSFX;
-    [SerializeField] private AudioClip crouchSFX;
-    [SerializeField] private AudioClip attackSFX;
-    [SerializeField] private AudioClip interactSFX;
-
-    [Header("Interaction")]
-    [SerializeField] private LayerMask cropLayer;
-    [SerializeField] private LayerMask exitLayer;
-
-    private CharacterController controller;
-    private Animator animator;
-    private float crouchWalk = 0f;
-    private AudioSource audioSource;
-    private Vector3 moveDirection = Vector3.zero;
-    private bool isCrouching = false;
-
-    void Start()
+    public class PlayerMovement : MonoBehaviour
     {
-        controller = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
-    }
+        public float move_speed = 7f;
+        public float move_accel = 40f;
+        public float rotate_speed = 150f;
 
-    void Update()
-    {
-        MovePlayer();
-        HandleInput();
-    }
+        [Header("Ground")]
+        public float gravity = 2f;
+        public float ground_dist = 0.2f;
+        public LayerMask ground_mask;
 
-    private void MovePlayer()
-    {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        moveDirection = new Vector3(horizontal, 0, vertical).normalized;
+        [Header("Hide")]
+        public bool can_hide = true;
+        public KeyCode hide_key = KeyCode.LeftShift;
 
-        if (moveDirection != Vector3.zero)
+        [Header("Sound Effects")]
+        [SerializeField] private AudioClip walkSFX;
+        [SerializeField] private AudioClip runSFX;
+        [SerializeField] private AudioClip crouchSFX;
+        [SerializeField] private AudioClip attackSFX;
+        [SerializeField] private AudioClip interactSFX;
+
+        private Vector3 current_move = Vector3.zero;
+        private Vector3 current_face = Vector3.forward;
+        private Rigidbody rigid;
+        private Animator animator;
+        private Collider collide;
+        private VisionTarget vision_target;
+        private AudioSource audioSource;
+
+        void Awake()
         {
-            float speed = isCrouching ? crouchSpeed : (Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed);
-            controller.Move(moveDirection * speed * Time.deltaTime);
-            transform.forward = moveDirection;
+            rigid = GetComponent<Rigidbody>();
+            animator = GetComponentInChildren<Animator>();
+            collide = GetComponentInChildren<Collider>();
+            vision_target = GetComponent<VisionTarget>();
+            audioSource = GetComponent<AudioSource>();
+        }
+
+        void FixedUpdate()
+        {
+            Vector3 move_dir = Vector3.zero;
+            if (Input.GetKey(KeyCode.W))
+                move_dir += Vector3.forward;
+            if (Input.GetKey(KeyCode.A))
+                move_dir += Vector3.left;
+            if (Input.GetKey(KeyCode.D))
+                move_dir += Vector3.right;
+            if (Input.GetKey(KeyCode.S))
+                move_dir += Vector3.back;
+
+            bool invisible = can_hide && Input.GetKey(hide_key);
+            if (vision_target)
+                vision_target.visible = !invisible;
+            if (collide)
+                collide.enabled = !invisible;
+
+            if (invisible)
+                move_dir = Vector3.zero;
+
+            // Move
+            move_dir = move_dir.normalized * Mathf.Min(move_dir.magnitude, 1f);
+            current_move = Vector3.MoveTowards(current_move, move_dir, move_accel * Time.fixedDeltaTime);
+            rigid.velocity = current_move * move_speed;
+
+            bool grounded = CheckIfGrounded();
+            if (!grounded)
+                rigid.velocity += Vector3.down * gravity;
+
+            if (current_move.magnitude > 0.1f)
+                current_face = new Vector3(current_move.x, 0f, current_move.z).normalized;
+
+            // Rotate
+            Vector3 dir = current_face;
+            dir.y = 0f;
+            if (dir.magnitude > 0.1f)
+            {
+                Quaternion target = Quaternion.LookRotation(dir.normalized, Vector3.up);
+                Quaternion reachedRotation = Quaternion.RotateTowards(transform.rotation, target, rotate_speed * Time.deltaTime);
+                transform.rotation = reachedRotation;
+            }
 
             // Handle movement animations and SFX
-            HandleMovementAnimationsAndSFX(speed);
-        }
-        else
-        {
-            animator.SetBool("isMoving", false);
-            crouchWalk = 0f;
-            animator.SetFloat("crouching", crouchWalk);
-        }
-    }
+            HandleMovementAnimationsAndSFX();
 
-    private void HandleInput()
-    {
-        // Crouch
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            isCrouching = !isCrouching;
-            animator.SetBool("isCrouching", isCrouching);
-            PlaySFX(crouchSFX);
+            // Additional Inputs
+            HandleAdditionalInputs();
         }
-        // Attack
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Attack();
-        }
-        // Interact (for collectibles, etc.)
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Interact();
-        }
-    }
-    private void Attack()
-    {
-        // Attack logic here
-        animator.SetTrigger("attack");
-        PlaySFX(attackSFX);
 
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 1f))
+        public bool CheckIfGrounded()
         {
-            Crop crop = hit.collider.GetComponent<Crop>();
-            if (crop != null)
+            Vector3 origin = transform.position + Vector3.up * ground_dist * 0.5f;
+            return RaycastObstacle(origin + Vector3.forward * 0.5f, Vector3.down * ground_dist)
+                || RaycastObstacle(origin + Vector3.back * 0.5f, Vector3.down * ground_dist)
+                || RaycastObstacle(origin + Vector3.left * 0.5f, Vector3.down * ground_dist)
+                || RaycastObstacle(origin + Vector3.right * 0.5f, Vector3.down * ground_dist);
+        }
+
+        public bool RaycastObstacle(Vector3 origin, Vector3 dir)
+        {
+            RaycastHit hit;
+            return Physics.Raycast(new Ray(origin, dir.normalized), out hit, dir.magnitude, ground_mask.value);
+        }
+
+        public Vector3 GetMove()
+        {
+            return current_move;
+        }
+
+        public Vector3 GetFace()
+        {
+            return current_face;
+        }
+
+        private void HandleMovementAnimationsAndSFX()
+        {
+            bool isMoving = current_move.magnitude > 0.1f;
+            animator.SetBool("isMoving", isMoving);
+            if (isMoving)
             {
-                crop.TakeDamage(1); // Assuming each attack deals 1 damage
+                PlaySFX(walkSFX); // Assuming walk speed for simplicity
+            }
+        }
+
+        private void HandleAdditionalInputs()
+        {
+            // Crouch
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                animator.SetBool("isCrouching", !animator.GetBool("isCrouching"));
+                PlaySFX(crouchSFX);
+            }
+
+            // Attack
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                animator.SetTrigger("attack");
+                PlaySFX(attackSFX);
+            }
+
+            // Interact
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                animator.SetTrigger("interact");
+                PlaySFX(interactSFX);
+            }
+        }
+
+        private void PlaySFX(AudioClip clip)
+        {
+            if (clip != null && !audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(clip);
             }
         }
     }
-    private void Interact()
-    {
-        // Interact logic here
-        animator.SetTrigger("interact");
-        PlaySFX(interactSFX);
-        // Check for exit interaction
-    }
-
-    private void HandleMovementAnimationsAndSFX(float speed)
-    {
-        animator.SetBool("isMoving", true);
-        crouchWalk = 1f;
-        animator.SetFloat("crouching", crouchWalk);
-        if (speed == runSpeed)
-        {
-            PlaySFX(runSFX);
-        }
-        else if (speed == walkSpeed)
-        {
-            PlaySFX(walkSFX);
-        }
-    }
-
-    private void PlaySFX(AudioClip clip)
-    {
-        if (clip != null && !audioSource.isPlaying)
-        {
-            audioSource.PlayOneShot(clip);
-        }
-    }
-
 }
