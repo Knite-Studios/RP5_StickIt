@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
     public int Score { get; private set; }
     public int Health { get; private set; }
 
+    // Declare the event for score changes
+    public delegate void ScoreChanged();
+    public event ScoreChanged OnScoreChanged;
+
     private void Awake()
     {
         if (Instance == null)
@@ -43,6 +47,7 @@ public class GameManager : MonoBehaviour
     public void AddScore(int points)
     {
         Score += points;
+        OnScoreChanged?.Invoke(); // Trigger the event
         // Update score UI here
     }
 
@@ -84,13 +89,12 @@ public class GameManager : MonoBehaviour
     
     public void WinGame()
     {
-        // Handle game over logic
-        // Show game over screen, etc.
+        // Handle win game logic
+        // Show win game screen, etc.
     }
 }
 
 public enum PowerUpType
 {
     HealthBoost,
-    // Define other power-up types here
 }

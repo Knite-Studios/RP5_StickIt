@@ -17,7 +17,10 @@ namespace Percy.EnemyVision
 
         [Header("Hide")]
         public bool can_hide = true;
-        public KeyCode hide_key = KeyCode.LeftShift;
+        public KeyCode hideKey = KeyCode.LeftControl;
+
+        [Header("Opacity Settings")]
+        [SerializeField] private float hiddenOpacity = 0.7f;
 
         [Header("Sound Effects")]
         [SerializeField] private AudioClip walkSFX;
@@ -55,14 +58,21 @@ namespace Percy.EnemyVision
             if (Input.GetKey(KeyCode.S))
                 move_dir += Vector3.back;
 
-            bool invisible = can_hide && Input.GetKey(hide_key);
+            bool isHiding = can_hide && Input.GetKey(hideKey);
             if (vision_target)
-                vision_target.visible = !invisible;
+                vision_target.visible = !isHiding;
             if (collide)
-                collide.enabled = !invisible;
+                collide.enabled = !isHiding;
 
-            if (invisible)
+            if (isHiding)
+            {
                 move_dir = Vector3.zero;
+                SetOpacity(hiddenOpacity);
+            }
+            else
+            {
+                SetOpacity(1f);
+            }
 
             // Move
             move_dir = move_dir.normalized * Mathf.Min(move_dir.magnitude, 1f);
@@ -108,23 +118,13 @@ namespace Percy.EnemyVision
             return Physics.Raycast(new Ray(origin, dir.normalized), out hit, dir.magnitude, ground_mask.value);
         }
 
-        public Vector3 GetMove()
-        {
-            return current_move;
-        }
-
-        public Vector3 GetFace()
-        {
-            return current_face;
-        }
-
         private void HandleMovementAnimationsAndSFX()
         {
             bool isMoving = current_move.magnitude > 0.1f;
             animator.SetBool("isMoving", isMoving);
             if (isMoving)
             {
-                PlaySFX(walkSFX); // Assuming walk speed for simplicity
+                PlaySFX(walkSFX);
             }
         }
 
@@ -140,8 +140,7 @@ namespace Percy.EnemyVision
             // Attack
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                animator.SetTrigger("attack");
-                PlaySFX(attackSFX);
+                Attack();
             }
 
             // Interact
@@ -149,6 +148,36 @@ namespace Percy.EnemyVision
             {
                 animator.SetTrigger("interact");
                 PlaySFX(interactSFX);
+            }
+        }
+
+        private void Attack()
+        {
+            animator.SetTrigger("attack");
+            PlaySFX(attackSFX);
+
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 1f))
+            {
+                if (hit.collider.CompareTag("Crop"))
+                {
+                    Crop crop = hit.collider.GetComponent<Crop>();
+                    if (crop != null)
+                    {
+                        crop.TakeDamage(1); // Assuming each attack deals 1 damage
+                    }
+                }
+            }
+        }
+
+        private void SetOpacity(float opacity)
+        {
+            Renderer renderer = GetComponent<Renderer>();
+            if (renderer != null)
+            {
+                Color color = renderer.material.color;
+                color.a = opacity;
+                renderer.material.color = color;
             }
         }
 
