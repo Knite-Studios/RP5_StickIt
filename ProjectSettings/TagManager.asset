@@ -7,6 +7,7 @@ TagManager:
   - Scarecrow
   - AlarmLight
   - Guard
+  - Crop
   layers:
   - Default
   - TransparentFX
