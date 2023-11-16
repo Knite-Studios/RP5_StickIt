@@ -2,92 +2,78 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScarecrowAI : MonoBehaviour
+namespace Percy.EnemyVision
 {
-    public float detectionRadius = 5f;
-    public float viewAngle = 110f; // FOV angle
-    public LayerMask playerLayer;
-    public AudioClip alertSFX;
-    public float rotationSpeed = 30f; // Degrees per second
-
-    private Light detectionLight;
-    private AudioSource audioSource;
-    private Animator animator;
-    private bool isAlerted = false;
-
-    void Start()
+    public class ScarecrowAI : MonoBehaviour
     {
-        detectionLight = GetComponentInChildren<Light>();
-        audioSource = GetComponent<AudioSource>();
-        animator = GetComponent<Animator>();
-        detectionLight.color = Color.red;
-    }
+        [Header("Vision Settings")]
+        public float rotationSpeed = 30f;
+        public float visionAngle = 30f;
+        public float visionRange = 10f;
+        public LayerMask visionMask = ~(0);
+        public Transform eye;
 
-    void Update()
-    {
-        if (!isAlerted)
+        [Header("Alert Settings")]
+        public float alertRange = 20f;
+        public float alertCooldown = 5f;
+        public GameObject player;
+
+        private float alertTimer = 0f;
+
+        void Update()
         {
-            RotateScarecrow();
-            DetectPlayer();
+            Rotate();
+            alertTimer += Time.deltaTime;
+
+            if (CanSeePlayer() && alertTimer > alertCooldown)
+            {
+                AlertNearbyEnemies();
+                alertTimer = 0f;
+            }
         }
-    }
 
-    private void RotateScarecrow()
-    {
-        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
-    }
-
-    private void DetectPlayer()
-    {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player == null) return;
-
-        Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
-        float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
-
-        if (angleToPlayer < viewAngle / 2)
+        private void Rotate()
         {
+            transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+        }
+
+        private bool CanSeePlayer()
+        {
+            if (!player) return false;
+
+            Vector3 directionToPlayer = (player.transform.position - GetEyePosition()).normalized;
+            if (Vector3.Angle(transform.forward, directionToPlayer) > visionAngle / 2) return false;
+
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, directionToPlayer, out hit, detectionRadius, playerLayer))
+            if (Physics.Raycast(GetEyePosition(), directionToPlayer, out hit, visionRange, visionMask))
             {
-                if (hit.collider.CompareTag("Player"))
-                {
-                    HandlePlayerDetection();
-                }
+                return hit.collider.gameObject == player;
+            }
+
+            return false;
+        }
+
+        private void AlertNearbyEnemies()
+        {
+            List<EnemyVision> enemiesInRange = EnemyVision.GetAllInRange(transform.position, alertRange);
+            foreach (EnemyVision enemy in enemiesInRange)
+            {
+                enemy.Alert(transform.position);
             }
         }
-    }
 
-    private void HandlePlayerDetection()
-    {
-        isAlerted = true;
-        animator.SetTrigger("Alert");
-        PlayAlertSFX();
-        StartAlarmLights();
-    }
-
-    private void PlayAlertSFX()
-    {
-        if (alertSFX != null)
+        private Vector3 GetEyePosition()
         {
-            audioSource.PlayOneShot(alertSFX);
+            return eye ? eye.position : transform.position;
         }
-    }
 
-    private void StartAlarmLights()
-    {
-        foreach (var light in FindObjectsOfType<Light>())
+        void OnDrawGizmosSelected()
         {
-            if (light.CompareTag("AlarmLight"))
-            {
-                light.color = Color.red; // Example: Change color to red
-            }
-        }
-    }
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(transform.position, visionRange);
 
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, alertRange);
+        }
     }
 }

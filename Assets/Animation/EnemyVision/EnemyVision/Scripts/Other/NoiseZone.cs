@@ -4,10 +4,6 @@ using UnityEngine;
 
 namespace Percy.EnemyVision
 {
-    /// <summary>
-    /// Will generate noise when the player steps on it
-    /// </summary>
-    
     public class NoiseZone : MonoBehaviour
     {
         public float alert_range = 20f;
@@ -39,7 +35,7 @@ namespace Percy.EnemyVision
             }
 
             if (noise_fx != null)
-                Instantiate(noise_fx, transform.position + Vector3.up * 1f, noise_fx.transform.rotation);
+                Instantiate(noise_fx, transform.position + Vector3.up * 3f, noise_fx.transform.rotation);
 
             if (audio_source != null)
                 audio_source.Play();
