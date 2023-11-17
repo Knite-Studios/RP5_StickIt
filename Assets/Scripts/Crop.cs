@@ -51,7 +51,8 @@ public class Crop : MonoBehaviour
     private void DestroyCrop()
     {
         GameManager.Instance.AddScore(cropType.scoreValue);
-
-        Destroy(gameObject,0.7f);
+        if(cropType.destroyedPrefab != null)
+            Instantiate(cropType.destroyedPrefab, transform.position, Quaternion.identity);
+        Destroy(gameObject,0.5f);
     }
 }

@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
+    [SerializeField] Color Low;
+    [SerializeField] Color High;
+
     public CropType data; 
     public Slider slider;
 
@@ -21,5 +24,6 @@ public class HealthBar : MonoBehaviour
     public void SetHealth(int health)
     {
         slider.value = health;
+        GetComponentInChildren<Image>().color = Color.Lerp(Low, High, slider.normalizedValue);
     }
 }

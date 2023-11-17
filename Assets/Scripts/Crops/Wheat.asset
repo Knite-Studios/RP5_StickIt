@@ -15,3 +15,4 @@ MonoBehaviour:
   healthPoints: 5
   scoreValue: 1
   damageSFX: {fileID: 0}
+  destroyedPrefab: {fileID: 1758473627833946668, guid: 9db31a4abeec8454cbbb930f17e61654, type: 3}
