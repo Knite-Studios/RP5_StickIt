@@ -2418,7 +2418,7 @@ PrefabInstance:
     - target: {fileID: 95948925257568786, guid: 727475cbbf33ea247a2faccbc51c000a, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 6b24808dab6624849959ac2c3de3ea97, type: 2}
+      objectReference: {fileID: 9100000, guid: 3c1e1a6d7c0584948914821d3c70e4b3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 727475cbbf33ea247a2faccbc51c000a, type: 3}
 --- !u!1 &173962509
@@ -10183,7 +10183,7 @@ PrefabInstance:
     - target: {fileID: 95663820981796124, guid: a3981b0f4b9c4bb489dce3db59ee32b5, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 6b24808dab6624849959ac2c3de3ea97, type: 2}
+      objectReference: {fileID: 9100000, guid: 3c1e1a6d7c0584948914821d3c70e4b3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3981b0f4b9c4bb489dce3db59ee32b5, type: 3}
 --- !u!4 &784752619 stripped
@@ -15517,6 +15517,10 @@ PrefabInstance:
       value: winPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 8571378406645497549, guid: 2cc8bc491e549a34892ad8c705224dcc, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3c1e1a6d7c0584948914821d3c70e4b3, type: 2}
+    - target: {fileID: 8571378406645497549, guid: 2cc8bc491e549a34892ad8c705224dcc, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
@@ -17510,7 +17514,7 @@ PrefabInstance:
     - target: {fileID: 95948925257568786, guid: 727475cbbf33ea247a2faccbc51c000a, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 6b24808dab6624849959ac2c3de3ea97, type: 2}
+      objectReference: {fileID: 9100000, guid: 3c1e1a6d7c0584948914821d3c70e4b3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 727475cbbf33ea247a2faccbc51c000a, type: 3}
 --- !u!1 &1380458920 stripped
@@ -23389,7 +23393,7 @@ PrefabInstance:
     - target: {fileID: 95311695241237188, guid: 3c3a8236be548bb4c892cf39a5abadfe, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 6b24808dab6624849959ac2c3de3ea97, type: 2}
+      objectReference: {fileID: 9100000, guid: 3c1e1a6d7c0584948914821d3c70e4b3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c3a8236be548bb4c892cf39a5abadfe, type: 3}
 --- !u!4 &1824377579 stripped
@@ -25725,11 +25729,11 @@ RectTransform:
   m_Father: {fileID: 180119567}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 9.678589, y: 528.5442}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 579.981, y: 137.53271}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &1983610641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25750,7 +25754,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YOU WON!!
+  m_text: YOU LOSE!!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

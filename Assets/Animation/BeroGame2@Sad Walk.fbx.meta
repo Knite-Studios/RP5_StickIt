@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 98d5833f63c7aae44b3c734694183bb4
+guid: 579843172e555624798c45c6feee2265
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -17,14 +17,7 @@ ModelImporter:
     removeConstantScaleCurves: 1
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
-      copied configuration does not match position in animation file:\n\t'mixamorig:LeftUpLeg'
-      : position error = 13.977619 mm\n\t'mixamorig:LeftLeg' : position error = 64.742393
-      mm\n\t'mixamorig:LeftFoot' : position error = 54.730797 mm\n\t'mixamorig:LeftToeBase'
-      : position error = 37.757095 mm\n\t'mixamorig:RightUpLeg' : position error
-      = 13.861956 mm\n\t'mixamorig:RightLeg' : position error = 64.594742 mm\n\t'mixamorig:RightFoot'
-      : position error = 54.666496 mm\n\t'mixamorig:RightToeBase' : position error
-      = 36.917263 mm\n"
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -40,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: mixamo.com
+      name: Sad Walk
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 31
+      lastFrame: 44
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
