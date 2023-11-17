@@ -19,7 +19,7 @@ namespace Percy.EnemyVision
         public bool group_detect = false; //Group detect will make an enemy follow another enemy chasing even if didnt see player
 
         [Header("Duration")]
-        public float detect_time = 1f;
+        public float detect_time = .5f;
         public float confused_time = 10f;
 
         [Header("Chase")]
@@ -123,7 +123,7 @@ namespace Percy.EnemyVision
                     Chase(target_seen);
 
                     if (onDetectTarget != null)
-                        onDetectTarget.Invoke(target_seen, 2);
+                        onDetectTarget.Invoke(target_seen, 2); 
                 }
 
                 if (target_seen != null && enemy.GetStateTimer() > 0.2f && CanSeeVisionTargetNear(target_seen))
@@ -152,7 +152,7 @@ namespace Percy.EnemyVision
                 vision_timer += can_see_target ? -Time.deltaTime : Time.deltaTime;
                 vision_timer = Mathf.Max(vision_timer, 0f);
 
-                if (enemy.GetStateTimer() > 0.15f) //Wait a bit before following
+                if (enemy.GetStateTimer() > 0.10f) //Wait a bit before following
                 {
                     enemy.SetFollowTarget(can_see_target ? seen_character.gameObject : null); //Follow target
                 }
