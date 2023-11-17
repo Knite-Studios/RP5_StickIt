@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Loading.unity
     guid: 1edf4cab1f2393442910588771c41ceb
+  - enabled: 1
+    path: Assets/Scenes/MainLevel_Perz.unity
+    guid: b9cb90bde5e579a41b8500f49b68ffdb
+  - enabled: 1
+    path: Assets/Scenes/WinScreen.unity
+    guid: 1e6cbeb9f8e8a1f46989259e17fb73b1
+  - enabled: 1
+    path: Assets/Scenes/LoseScreen.unity
+    guid: 82cfb9913785489498fecfd8c50289b0
   m_configObjects: {}
