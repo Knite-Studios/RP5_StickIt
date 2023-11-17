@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("highscore", Score);//save highscore
         }
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(5);
     }
     public void Retry()
     {
@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(3);
     }
 }
 

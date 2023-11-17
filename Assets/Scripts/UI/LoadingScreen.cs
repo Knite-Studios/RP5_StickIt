@@ -8,7 +8,7 @@ public class LoadingScreen : MonoBehaviour
     public Slider loadingSlider;
     public float fakeLoadingSpeed = 0.2f;
     private float progress = 0f;
-
+    [SerializeField] int sceneNum;
     void Start()
     {
         if(loadingSlider == null)
@@ -28,6 +28,6 @@ public class LoadingScreen : MonoBehaviour
             loadingSlider.value = progress;
             yield return null;
         }
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(sceneNum);
     }
 }
