@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,9 +14,13 @@ public class GameManager : MonoBehaviour
     // Declare the event for score changes
     public delegate void ScoreChanged();
     public event ScoreChanged OnScoreChanged;
+    [SerializeField]
+    private TMP_Text highscoreText;
+    private int highscore;
 
     private void Awake()
     {
+        highscore = PlayerPrefs.GetInt("highscore", 0);
         if (Instance == null)
         {
             Instance = this;
@@ -50,6 +55,11 @@ public class GameManager : MonoBehaviour
         Score += points;
         OnScoreChanged?.Invoke(); // Trigger the event
         // Update score UI here
+        if (highscore < Score)
+        {
+            highscore = Score;
+            highscoreText.text = highscore.ToString();
+        }
     }
 
     public void TakeDamage(int damage)
@@ -70,7 +80,7 @@ public class GameManager : MonoBehaviour
             case PowerUpType.HealthBoost:
                 IncreaseHealth(20); // Example value
                 break;
-            // Add other power-up types here
+                // Add other power-up types here
         }
     }
 
@@ -84,9 +94,20 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        highscore = PlayerPrefs.GetInt("highscore", 0);//
+        if (highscore < Score)//if new score greater than current highscore, then highscore=new score.
+        {
+            PlayerPrefs.SetInt("highscore", Score);//save highscore
+        }
         SceneManager.LoadScene(0);
     }
-    
+    public void Retry()
+    {
+        Score = 0;
+        //scoreText.text = Score.ToString();
+        highscoreText.text = highscore.ToString();
+    }
+
     public void WinGame()
     {
         SceneManager.LoadScene(0);
