@@ -27,7 +27,7 @@ namespace Percy.EnemyVision
         [SerializeField] private AudioClip attackSFX;
 
         [Header("Attack")]
-        [SerializeField] private Collider attackCollider;
+        [SerializeField] private Transform attackPos;
         [SerializeField] private float attackSpeed = 2f;
 
         private bool isAttacking = false;
@@ -47,7 +47,6 @@ namespace Percy.EnemyVision
             collide = GetComponentInChildren<Collider>();
             vision_target = GetComponent<VisionTarget>();
             audioSource = GetComponent<AudioSource>();
-            attackCollider.enabled = false;
         }
 
         void Update()
@@ -109,7 +108,7 @@ namespace Percy.EnemyVision
                     collide.enabled = !isHiding;
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) && !isAttacking)
+            if (Input.GetButtonDown("Jump"))
             {
                 Attack();
             }
@@ -133,30 +132,22 @@ namespace Percy.EnemyVision
 
         private void Attack()
         {
-            isAttacking = true;
+           
             animator.SetTrigger("attack");
             PlaySFX(attackSFX);
-            StartCoroutine(EnableAttackCollider());
-        }
 
-        private IEnumerator EnableAttackCollider()
-        {
-            attackCollider.enabled = true;
-            yield return new WaitForSeconds(attackSpeed);
-            attackCollider.enabled = false;
-            isAttacking = false;
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if (isAttacking && other.CompareTag("Crop"))
+            foreach(Collider collider in Physics.OverlapSphere(attackPos.position, attackSpeed))
             {
-                Crop crop = other.GetComponent<Crop>();
-                if (crop != null)
+                if (collider.CompareTag("Crop"))
                 {
-                    crop.TakeDamage(1);
+                    Crop crop = collider.GetComponent<Crop>();
+                    if (crop != null)
+                    {
+                        crop.TakeDamage(1);
+                    }
                 }
             }
+
         }
 
         private void PlaySFX(AudioClip clip)

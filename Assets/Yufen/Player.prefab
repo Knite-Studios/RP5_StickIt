@@ -705,6 +705,51 @@ Transform:
   m_Father: {fileID: 4565788739068690418}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1009117499637062811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5976387090596425369}
+  - component: {fileID: 136528837242655586}
+  m_Layer: 0
+  m_Name: attackCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5976387090596425369
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009117499637062811}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0009, y: 0.045, z: 0.0231}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8603102005125115125}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &136528837242655586
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009117499637062811}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.01, z: 0.01}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1017512521567504546
 GameObject:
   m_ObjectHideFlags: 0
@@ -3054,7 +3099,7 @@ Transform:
   m_GameObject: {fileID: 8948523945026303567}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.28, z: 0}
-  m_LocalScale: {x: 22.880136, y: 22.880136, z: 22.880136}
+  m_LocalScale: {x: 50.990673, y: 50.990673, z: 50.990673}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1593836608624014562}
@@ -3069,6 +3114,7 @@ Transform:
   - {fileID: 878436761850938584}
   - {fileID: 6021322626136729039}
   - {fileID: 4266045183765810273}
+  - {fileID: 5976387090596425369}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3155,14 +3201,14 @@ MonoBehaviour:
   ground_dist: 0.2
   ground_mask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 63
   can_hide: 1
   hideKey: 304
   walkSFX: {fileID: 0}
   runSFX: {fileID: 0}
   crouchSFX: {fileID: 0}
   attackSFX: {fileID: 0}
-  attackCollider: {fileID: 0}
+  attackPos: {fileID: 5976387090596425369}
   attackSpeed: 2
 --- !u!82 &2872675341335577024
 AudioSource:
