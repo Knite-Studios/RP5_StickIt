@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2433947829815854162}
   - component: {fileID: 2431456904890347150}
   - component: {fileID: 2421816846910210842}
+  - component: {fileID: 1277708976533313367}
+  - component: {fileID: -2768056219614711198}
   m_Layer: 0
   m_Name: ChickenCoop
   m_TagString: Untagged
@@ -83,3 +85,30 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1277708976533313367
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2435425640619010294}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.2320535, y: 2.4815257, z: 3.8954194}
+  m_Center: {x: 0.000000059604645, y: 1.0546867, z: 3.5527137e-15}
+--- !u!64 &-2768056219614711198
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2435425640619010294}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 5b4cfa49394ab1a4b977f14f86d8d0b4, type: 3}
