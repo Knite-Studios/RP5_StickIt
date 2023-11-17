@@ -36,6 +36,7 @@ public class Crop : MonoBehaviour
     private void DestroyCrop()
     {
         GameManager.Instance.AddScore(cropType.scoreValue);
-        Destroy(gameObject);
+
+        Destroy(gameObject,0.7f);
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -83,14 +84,12 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        // Handle game over logic
-        // Show game over screen, etc.
+        SceneManager.LoadScene(0);
     }
     
     public void WinGame()
     {
-        // Handle win game logic
-        // Show win game screen, etc.
+        SceneManager.LoadScene(0);
     }
 }
 

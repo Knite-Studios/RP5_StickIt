@@ -28,6 +28,8 @@ namespace Percy.EnemyVision
 
         [Header("Attack")]
         [SerializeField] private Collider attackCollider;
+        [SerializeField] private float attackSpeed = 2f;
+
         private bool isAttacking = false;
 
         private Vector3 current_move = Vector3.zero;
@@ -140,7 +142,7 @@ namespace Percy.EnemyVision
         private IEnumerator EnableAttackCollider()
         {
             attackCollider.enabled = true;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(attackSpeed);
             attackCollider.enabled = false;
             isAttacking = false;
         }

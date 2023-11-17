@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a7e5f7e3e56e0f49b559a403372c654, type: 3}
   m_Name: Wheat
   m_EditorClassIdentifier: 
-  healthPoints: 1
+  healthPoints: 5
   scoreValue: 1
   damageSFX: {fileID: 0}
-  cropDropPrefab: {fileID: 0}
