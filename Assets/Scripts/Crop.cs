@@ -8,6 +8,8 @@ public class Crop : MonoBehaviour
     private int currentHealth;
     private AudioSource audioSource;
     private HealthBar healthBar;
+    private bool tookDamage = false;
+
     void Start()
     {
         currentHealth = cropType.healthPoints;
@@ -16,10 +18,19 @@ public class Crop : MonoBehaviour
     }
     private void Update()
     {
-        healthBar.SetHealth(currentHealth);
+        if(tookDamage)
+        {
+            healthBar.SetHealth(currentHealth);
+        }else
+        {
+            healthBar.SetHealth(0);
+        }
+       
     }
     public void TakeDamage(int damage)
     {
+        tookDamage = true;
+        //turn on canvas based on tookDamage bool
         currentHealth -= damage;
         PlayDamageSFX();
 
