@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 5
   scoreValue: 1
-  damageSFX: {fileID: 0}
+  damageSFX: {fileID: 8300000, guid: b84153c6086240f44994e42a1f912cfc, type: 3}
   destroyedPrefab: {fileID: 1758473627833946668, guid: 9db31a4abeec8454cbbb930f17e61654, type: 3}

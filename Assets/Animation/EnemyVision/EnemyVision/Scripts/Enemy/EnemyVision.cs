@@ -14,7 +14,7 @@ namespace Percy.EnemyVision
         public float vision_near_range = 5f;
         public float vision_height_above = 1f; //How far above can they detect
         public float vision_height_below = 10f; //How far below can they detect
-        public float touch_range = 1f;
+        public float touch_range = 1f; //How far can they touch
         public LayerMask vision_mask = ~(0);
         public bool group_detect = false; //Group detect will make an enemy follow another enemy chasing even if didnt see player
 
@@ -27,8 +27,8 @@ namespace Percy.EnemyVision
         public bool dont_return = false;
 
         [Header("Ref")]
-        public Transform eye;
-        public GameObject vision_prefab;
+        public Transform eye; //Where the enemy vision is
+        public GameObject vision_prefab; //The vision cone prefab
         public GameObject death_fx_prefab;
 
         public UnityAction<VisionTarget, int> onSeeTarget; //As soon as seen (Patrol->Alert)  int:0=touch, 1=near, 2=far, 3:other
@@ -152,23 +152,27 @@ namespace Percy.EnemyVision
                 vision_timer += can_see_target ? -Time.deltaTime : Time.deltaTime;
                 vision_timer = Mathf.Max(vision_timer, 0f);
 
-                if (enemy.GetStateTimer() > 0.5f)
+                if (enemy.GetStateTimer() > 0.15f) //Wait a bit before following
                 {
-                    enemy.SetFollowTarget(can_see_target ? seen_character.gameObject : null);
+                    enemy.SetFollowTarget(can_see_target ? seen_character.gameObject : null); //Follow target
                 }
 
-                if (vision_timer > follow_time)
+                if (vision_timer > follow_time) //If lost target, will go back to patrol
                 {
                     ResumeDefault();
                 }
 
-                if (enemy.HasReachedTarget() && !can_see_target)
+                if (enemy.HasReachedTarget() && !can_see_target) //If reached target and cant see, will go back to patrol
                     enemy.ChangeState(EnemyState.Confused);
 
                 if(seen_character == null)
                     enemy.ChangeState(EnemyState.Confused);
 
-                DetectTouchTarget();
+                // Check for touch
+                if (CanTouchObject(seen_character.gameObject))
+                {
+                    GameManager.Instance.GameOver(); // Trigger game over
+                }            
             }
 
             //After the chase, if VisionTarget is unseen, enemy will be confused
@@ -342,11 +346,7 @@ namespace Percy.EnemyVision
         public bool CanTouchObject(GameObject obj)
         {
             Vector3 dir = obj.transform.position - transform.position;
-            if (dir.magnitude < touch_range) //In range and in angle
-            {
-                return true;
-            }
-            return false;
+            return dir.magnitude < touch_range; // Check only the distance, not the angle
         }
 
         //Return seen distance of target: 0:touch,  1:near,  2:far,  3:other

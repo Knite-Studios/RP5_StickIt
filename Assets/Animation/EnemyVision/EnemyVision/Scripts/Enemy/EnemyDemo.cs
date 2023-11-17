@@ -56,7 +56,7 @@ namespace Percy.EnemyVision
 
         private void OnTouch(VisionTarget target)
         {
-            //Add code for when you get caughts
+            Debug.Log("Touch");
         }
 
         private void OnDeath()
