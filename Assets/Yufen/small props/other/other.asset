@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a7e5f7e3e56e0f49b559a403372c654, type: 3}
   m_Name: other
   m_EditorClassIdentifier: 
-  healthPoints: 0
+  healthPoints: 3
   scoreValue: 0
   damageSFX: {fileID: 8300000, guid: b84153c6086240f44994e42a1f912cfc, type: 3}
   destroyedPrefab: {fileID: 0}

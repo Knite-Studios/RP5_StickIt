@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a7e5f7e3e56e0f49b559a403372c654, type: 3}
   m_Name: wood
   m_EditorClassIdentifier: 
-  healthPoints: 5
+  healthPoints: 3
   scoreValue: 1
   damageSFX: {fileID: 8300000, guid: ff2aefdda04f5ea4eb881315b0c8588d, type: 3}
-  destroyedPrefab: {fileID: 0}
+  destroyedPrefab: {fileID: 1761897014483931604, guid: f3a772a51e9600d4fa80ce3589238b72, type: 3}

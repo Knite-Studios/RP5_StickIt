@@ -61,3 +61,10 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Ignore user settings files
+UserSettings/
+EditorUserSettings/
+
+# Ignore specific file with extension .dwit
+*.dwit
+
