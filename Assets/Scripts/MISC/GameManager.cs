@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        UpdateHighscoreText();
     }
 
     void Start()
@@ -103,7 +104,6 @@ public class GameManager : MonoBehaviour
     public void Retry()
     {
         Score = 0;
-        highscoreText.text = highscore.ToString();
     }
 
     public void WinGame()
