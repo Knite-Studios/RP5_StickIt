@@ -11,9 +11,9 @@ public class GameManager : MonoBehaviour
     public int Score { get; private set; }
     public int Health { get; private set; }
 
-    // Declare the event for score changes
     public delegate void ScoreChanged();
     public event ScoreChanged OnScoreChanged;
+
     [SerializeField]
     private TMP_Text highscoreText;
     private int highscore;
@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         InitializeGame();
+        UpdateHighscoreText();
     }
 
     void Update()
@@ -44,17 +45,15 @@ public class GameManager : MonoBehaviour
 
     private void InitializeGame()
     {
-        // Initialize game variables
         Score = 0;
-        Health = 100; // Example starting health
+        Health = 100;
         // Other initialization code
     }
 
     public void AddScore(int points)
     {
         Score += points;
-        OnScoreChanged?.Invoke(); // Trigger the event
-        // Update score UI here
+        OnScoreChanged?.Invoke();
         if (highscore < Score)
         {
             highscore = Score;
@@ -74,11 +73,10 @@ public class GameManager : MonoBehaviour
 
     public void CollectPowerUp(PowerUpType powerUpType)
     {
-        // Handle different power-up types
         switch (powerUpType)
         {
             case PowerUpType.HealthBoost:
-                IncreaseHealth(20); // Example value
+                IncreaseHealth(20);
                 break;
                 // Add other power-up types here
         }
@@ -87,31 +85,38 @@ public class GameManager : MonoBehaviour
     private void IncreaseHealth(int amount)
     {
         Health += amount;
-        // Ensure health does not exceed max value
         Health = Mathf.Min(Health, 100);
         // Update health UI here
     }
 
     public void GameOver()
     {
-        highscore = PlayerPrefs.GetInt("highscore", 0);//
-        if (highscore < Score)//if new score greater than current highscore, then highscore=new score.
+        if (highscore < Score)
         {
-            PlayerPrefs.SetInt("highscore", Score);//save highscore
+            PlayerPrefs.SetInt("highscore", Score);
         }
         SceneManager.LoadScene(5);
+        UpdateHighscoreText();
     }
+
     public void Retry()
     {
         Score = 0;
-        //scoreText.text = Score.ToString();
         highscoreText.text = highscore.ToString();
     }
 
     public void WinGame()
     {
         SceneManager.LoadScene(3);
+        UpdateHighscoreText();
     }
+
+    private void UpdateHighscoreText()
+    {
+        highscore = PlayerPrefs.GetInt("highscore", 0);
+        highscoreText.text = "High Score: " + highscore.ToString();
+    }
+
 }
 
 public enum PowerUpType
