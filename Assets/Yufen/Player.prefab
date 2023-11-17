@@ -3148,21 +3148,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d205057b0b22934ea8250cc94c3367b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move_speed: 7
-  move_accel: 40
-  rotate_speed: 150
+  move_speed: 8
+  move_accel: 10
+  rotate_speed: 450
   gravity: 2
   ground_dist: 0.2
   ground_mask:
     serializedVersion: 2
     m_Bits: 0
   can_hide: 1
-  hideKey: 306
+  hideKey: 304
   walkSFX: {fileID: 0}
   runSFX: {fileID: 0}
   crouchSFX: {fileID: 0}
   attackSFX: {fileID: 0}
   attackCollider: {fileID: 0}
+  attackSpeed: 2
 --- !u!82 &2872675341335577024
 AudioSource:
   m_ObjectHideFlags: 0
