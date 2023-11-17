@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2539629300087480823}
   - component: {fileID: 1156128710925925195}
   - component: {fileID: 4480150032327082588}
+  - component: {fileID: 7268981464328730780}
   m_Layer: 0
   m_Name: DestroyEffect
   m_TagString: Untagged
@@ -4882,6 +4883,20 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!64 &7268981464328730780
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761897014483931604}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &2492450572691031475
 GameObject:
   m_ObjectHideFlags: 0
