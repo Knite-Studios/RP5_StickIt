@@ -637,11 +637,7 @@ Canvas:
   m_GameObject: {fileID: 1516811851}
   m_Enabled: 1
   serializedVersion: 3
-<<<<<<< HEAD
   m_RenderMode: 0
-=======
-  m_RenderMode: 1
->>>>>>> d1626a6267f6ab09c00f1dd2f484122f10198f3a
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -663,11 +659,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
   m_ConstrainProportionsScale: 1
-=======
-  m_ConstrainProportionsScale: 0
->>>>>>> d1626a6267f6ab09c00f1dd2f484122f10198f3a
   m_Children:
   - {fileID: 1969600237}
   - {fileID: 1321780663}
@@ -824,22 +816,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-<<<<<<< HEAD
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-=======
-  m_Color: {r: 1, g: 0.8066038, b: 0.8066038, a: 1}
->>>>>>> d1626a6267f6ab09c00f1dd2f484122f10198f3a
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-<<<<<<< HEAD
   m_Sprite: {fileID: 21300000, guid: 308fd27dfd924db48a9da00319d4f502, type: 3}
-=======
-  m_Sprite: {fileID: 21300000, guid: a6063a255007f40b48c249d7614f8431, type: 3}
->>>>>>> d1626a6267f6ab09c00f1dd2f484122f10198f3a
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
