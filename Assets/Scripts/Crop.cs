@@ -7,13 +7,17 @@ public class Crop : MonoBehaviour
     public CropType cropType;
     private int currentHealth;
     private AudioSource audioSource;
-
+    private HealthBar healthBar;
     void Start()
     {
         currentHealth = cropType.healthPoints;
         audioSource = GetComponent<AudioSource>();
+        healthBar = GetComponentInChildren<HealthBar>();
     }
-
+    private void Update()
+    {
+        healthBar.SetHealth(currentHealth);
+    }
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
