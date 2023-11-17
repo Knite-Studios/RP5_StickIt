@@ -56,11 +56,11 @@ public class MainMenu : MonoBehaviour
         muteIcon.SetActive(isMuted);
         _menuSpeaker.mute = isMuted;
     }
-    public void StartGame()
+    public void Play()
     {
-        //SceneManager.LoadScene(1); // open level
+        SceneManager.LoadScene("Loading");
     }
-    public void QuitGame()
+    public void Quit()
     {
         Application.Quit();
         #if UNITY_EDITOR
