@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+         //   DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("highscore", Score);
         }
+        GetComponent<AudioSource>().Stop();
         SceneManager.LoadScene(5);
         UpdateHighscoreText();
     }
