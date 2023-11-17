@@ -18,13 +18,18 @@ public class Crop : MonoBehaviour
     }
     private void Update()
     {
-        if(tookDamage)
+        if(healthBar != null)
         {
-            healthBar.SetHealth(currentHealth);
-        }else
-        {
-            healthBar.SetHealth(0);
+            if (tookDamage)
+            {
+                healthBar.SetHealth(currentHealth);
+            }
+            else
+            {
+                healthBar.SetHealth(0);
+            }
         }
+        
        
     }
     public void TakeDamage(int damage)

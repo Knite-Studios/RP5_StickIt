@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 4676496279430286821}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4676496279734569844}
@@ -102,6 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77984b52c722a134ab64dda724329624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Low: {r: 1, g: 0, b: 0, a: 1}
+  High: {r: 0, g: 1, b: 0.034508705, a: 1}
+  data: {fileID: 0}
   slider: {fileID: 4676496279430286822}
 --- !u!1 &4676496279734569845
 GameObject:
