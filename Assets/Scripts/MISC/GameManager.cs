@@ -58,7 +58,8 @@ public class GameManager : MonoBehaviour
         if (highscore < Score)
         {
             highscore = Score;
-            highscoreText.text = highscore.ToString();
+            highscoreText.text = "High Score: " + highscore.ToString();
+
         }
     }
 

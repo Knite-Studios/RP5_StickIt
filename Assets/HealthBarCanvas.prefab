@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 8968296561147047852}
-  offset: {x: 0, y: 3, z: 0}
+  offset: {x: 5, y: 3, z: 0}
 --- !u!1001 &4364984892365611594
 PrefabInstance:
   m_ObjectHideFlags: 0

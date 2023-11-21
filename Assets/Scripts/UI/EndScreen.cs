@@ -15,7 +15,7 @@ public class EndScreen : MonoBehaviour
        SceneManager.LoadScene(1);
     }
 
-    void start()
+    void Start()
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
