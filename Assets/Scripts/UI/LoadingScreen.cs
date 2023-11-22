@@ -11,6 +11,7 @@ public class LoadingScreen : MonoBehaviour
     [SerializeField] int sceneNum;
     void Awake()
     {
+        Time.timeScale = 1f;
         if(loadingSlider == null)
         {
             Debug.LogWarning("No reference to loadingSlider. Please set in the Inspector.");
@@ -28,6 +29,8 @@ public class LoadingScreen : MonoBehaviour
             loadingSlider.value = progress;
             yield return null;
         }
+        Debug.Log(progress);
+        progress = 0f;
         SceneManager.LoadScene(sceneNum);
     }
 }
