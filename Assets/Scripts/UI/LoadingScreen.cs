@@ -9,7 +9,7 @@ public class LoadingScreen : MonoBehaviour
     public float fakeLoadingSpeed = 0.2f;
     private float progress = 0f;
     [SerializeField] int sceneNum;
-    void Start()
+    void Awake()
     {
         if(loadingSlider == null)
         {
