@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 281190159970019808}
   m_Layer: 0
   m_Name: Bush_2_2
-  m_TagString: Crop
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
