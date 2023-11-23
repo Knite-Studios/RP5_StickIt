@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace IndieMarc.EnemyVision
+namespace Percy.EnemyVision
 {
-    /// <summary>
-    /// Camera following a target
-    /// </summary>
 
     public class CameraFollow : MonoBehaviour
     {
