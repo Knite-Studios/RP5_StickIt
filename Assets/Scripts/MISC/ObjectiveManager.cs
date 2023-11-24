@@ -13,6 +13,10 @@ public class ObjectiveManager : MonoBehaviour
 
     private Dictionary<CropType, int> collectiblesCollected = new ();
 
+    public bool UnlockDoor()
+    {
+        return ObjectiveCompleted(mainObjectives[0]);
+    }
     private bool ObjectiveCompleted(Objective obj) 
     {
         if (collectiblesCollected[obj.collectibleType] >= obj.requiredAmount)
@@ -70,34 +74,6 @@ public class ObjectiveManager : MonoBehaviour
         }
     }
 
-    /*public void AddCollectible(CropType collectible)
-    {
-        if (collectiblesCollected.ContainsKey(collectible))
-        {
-            collectiblesCollected[collectible]++;
-
-            // Check if objectives are completed
-            foreach (Objective objective in mainObjectives)
-            {
-                if (objective.collectibleType == collectible)
-                {
-                    CheckObjectiveCompletion(objective);
-                    UpdateObjectiveText();
-                    break;
-                }
-            }
-            foreach (Objective objective in sideObjectives)
-            {
-                if (objective.collectibleType == collectible)
-                {
-                    CheckObjectiveCompletion(objective);
-                    UpdateObjectiveText();
-                    break;
-                }
-            }
-        }
-    }*/
-
     private void CheckObjectiveCompletion(Objective objective)
     {
         if (collectiblesCollected[objective.collectibleType] >= objective.requiredAmount)
@@ -111,9 +87,13 @@ public class ObjectiveManager : MonoBehaviour
 
     private void UpdateObjectiveText()
     {
+        // Update the text for the main and side objectives
         if (ObjectiveCompleted(mainObjectives[0]))
-        
+        {
             mainObjectiveText.text = "Main objective completed!";
+
+        }
+
         else
         UpdateTextForObjectiveType(mainObjectives, mainObjectiveText);
 
