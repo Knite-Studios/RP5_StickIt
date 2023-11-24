@@ -5,7 +5,8 @@ public class OpenDoor : MonoBehaviour
 {
     [SerializeField]
     private float doorSpeed = 1f;
-
+    [SerializeField]
+    private bool open = false;
     private float openAngle = -90f; // Change this to the desired open angle
 
     private Quaternion initialRotation;
@@ -19,7 +20,7 @@ public class OpenDoor : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && (ObjectiveManager.Instance.UnlockDoor() || open))
         {
             StartCoroutine(OpenDoorCoroutine());
             BoxCollider boxCollider = GetComponent<BoxCollider>();
