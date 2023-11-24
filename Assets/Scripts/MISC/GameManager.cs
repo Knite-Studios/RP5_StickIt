@@ -11,13 +11,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    public int Health { get; private set; }
-
     [SerializeField]
-    private string SceneName = "MM";
+    private string LoadToAfterWin = "09_LoadingWin";
     [SerializeField]
     private GameObject rewardScreen;
-    [SerializeField]
+    [Header("Star System"),SerializeField]
     private GameObject[] stars;
     private void Awake()
     {
@@ -33,28 +31,6 @@ public class GameManager : MonoBehaviour
         rewardScreen.SetActive(false);
     }
 
-    void Start()
-    {
-        InitializeGame();
-    }
-
-    void Update()
-    {
-        // Update game state if needed
-    }
-
-    private void InitializeGame()
-    {
-        Health = 100;
-        // Other initialization code
-    }
-    private void IncreaseHealth(int amount)
-    {
-        Health += amount;
-        Health = Mathf.Min(Health, 100);
-        // Update health UI here
-    }
-
     public void GameOver()
     {
         SceneManager.LoadScene("08_LoadingLose");
@@ -62,7 +38,7 @@ public class GameManager : MonoBehaviour
     public void Continue()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneName);
+        SceneManager.LoadScene(LoadToAfterWin);
     }
 
     public void Retry()

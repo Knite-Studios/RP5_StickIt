@@ -5,13 +5,14 @@ using TMPro;
 public class ObjectiveManager : MonoBehaviour
 {
     public static ObjectiveManager Instance; // Singleton pattern to access it globally
-
+    [Header("Objective system"),SerializeField]
     public Objective mainObjective;
     public Objective sideObjective;
     public TextMeshProUGUI mainObjectiveText; // Reference to the TextMeshPro field for main objectives
     public TextMeshProUGUI sideObjectiveText; // Reference to the TextMeshPro field for side objectives
 
-    private Dictionary<CropType, int> collectiblesCollected = new Dictionary<CropType, int>();
+    private Dictionary<CropType, int> collectiblesCollected = new ();
+
     private int stars = 0;
     private bool giveStarMain1 = true;
     private bool giveStarSide2 = true;
@@ -63,7 +64,7 @@ public class ObjectiveManager : MonoBehaviour
         if (collectiblesCollected[objective.collectibleType] >= objective.requiredAmount)
         {
 
-            Debug.Log($"Objective completed: Gathered {objective.requiredAmount} {objective.collectibleType.name}");
+            Debug.Log($"Objective completed: Gathered {objective.requiredAmount} / {objective.requiredAmount} {objective.collectibleType.name} ");
 
             if (giveStar)
             {
