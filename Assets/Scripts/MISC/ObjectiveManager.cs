@@ -13,6 +13,8 @@ public class ObjectiveManager : MonoBehaviour
 
     private Dictionary<CropType, int> collectiblesCollected = new ();
 
+    private int stars = 0;
+    private bool getstars = true;
     public bool UnlockDoor()
     {
         return ObjectiveCompleted(mainObjectives[0]);
@@ -32,7 +34,7 @@ public class ObjectiveManager : MonoBehaviour
         Instance = this;
         InitializeCollectibles();
         UpdateObjectiveText();
-        
+        stars = 0;
     }
 
     private void InitializeCollectibles()
@@ -67,6 +69,10 @@ public class ObjectiveManager : MonoBehaviour
                 if (objective.collectibleType == destroyedCropType)
                 {
                     CheckObjectiveCompletion(objective);
+                    if ((collectiblesCollected[objective.collectibleType] >= (objective.requiredAmount/2)) && getstars)
+                    {
+                        stars++;
+                    }
                     UpdateObjectiveText();
                     break;
                 }
@@ -78,6 +84,7 @@ public class ObjectiveManager : MonoBehaviour
     {
         if (collectiblesCollected[objective.collectibleType] >= objective.requiredAmount)
         {
+            stars++;
             // Objective completed
             Debug.Log($"Objective completed: Gathered {objective.requiredAmount} {objective.collectibleType.name}");
 
@@ -117,7 +124,10 @@ public class ObjectiveManager : MonoBehaviour
         textMesh.text = objectivesString;
  
     }
-
+    public int StarCount()
+    {
+        return stars;  
+    }
 }
 [System.Serializable]
 public class Objective

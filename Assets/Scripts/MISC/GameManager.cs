@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
 
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
     private string SceneName = "MM";
     [SerializeField]
     private GameObject rewardScreen;
+    [SerializeField]
+    private GameObject[] stars;
     private void Awake()
     {
         if (Instance == null)
@@ -45,12 +48,6 @@ public class GameManager : MonoBehaviour
         Health = 100;
         // Other initialization code
     }
-
-    public void AddScore(int points)
-    {
-
-    }
-
     private void IncreaseHealth(int amount)
     {
         Health += amount;
@@ -60,9 +57,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        //togglePopUp
-        
-        
+        SceneManager.LoadScene("08_LoadingLose");
     }
     public void Continue()
     {
@@ -78,9 +73,20 @@ public class GameManager : MonoBehaviour
     public void WinGame()
     {
         rewardScreen.SetActive(true);
+        ToggleStars();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0f;
     }
+    private void ToggleStars()
+    {
+      int numOfStars = ObjectiveManager.Instance.StarCount();
+        numOfStars = Mathf.Clamp(numOfStars, 0, 3);
 
+        for (int i = 0; i < stars.Length; i++)
+        {
+            // Enable stars up to the given number and disable the rest
+            stars[i].SetActive(i < numOfStars);
+        }
+    }
 }
