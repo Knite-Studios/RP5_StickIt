@@ -6,11 +6,6 @@ public class Exit : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            // Player has reached the exit
-            GameManager.Instance.WinGame();
-            // Trigger win game canvas here
-        }
+        GameManager.Instance.WinGame();
     }
 }

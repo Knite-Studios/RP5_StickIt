@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public int Health { get; private set; }
 
     [SerializeField]
-    private int SceneNumber = 0;
+    private string SceneName = "MM";
     [SerializeField]
     private GameObject rewardScreen;
     private void Awake()
@@ -61,15 +61,13 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         //togglePopUp
-        rewardScreen.SetActive(true);
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        
         
     }
     public void Continue()
     {
-       
-        SceneManager.LoadScene(SceneNumber);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneName);
     }
 
     public void Retry()
@@ -79,7 +77,10 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
-        SceneManager.LoadScene(3);
+        rewardScreen.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0f;
     }
 
 }

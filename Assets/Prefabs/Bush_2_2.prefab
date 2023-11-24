@@ -12,12 +12,11 @@ GameObject:
   - component: {fileID: 33895278003402856}
   - component: {fileID: 23482849361618046}
   - component: {fileID: 281190159970019808}
-  - component: {fileID: 7966071595635857671}
   - component: {fileID: 4281220524262625940}
   - component: {fileID: 3232598583165350053}
   m_Layer: 0
   m_Name: Bush_2_2
-  m_TagString: Crop
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,19 +183,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7966071595635857671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1344178769122004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a536c13aedf3cb84db298e389db03d8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cropType: {fileID: 11400000, guid: 2a684837883180645a126ed264cecfef, type: 2}
 --- !u!114 &4281220524262625940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,7 +225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1760143611499745129, guid: ff42018361abdfa4f85a5af15ca32a70, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1760143611499745130, guid: ff42018361abdfa4f85a5af15ca32a70, type: 3}
       propertyPath: m_Pivot.x
@@ -327,11 +313,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8968296561362987326, guid: ff42018361abdfa4f85a5af15ca32a70, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8968296561362987326, guid: ff42018361abdfa4f85a5af15ca32a70, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff42018361abdfa4f85a5af15ca32a70, type: 3}

@@ -8,7 +8,9 @@ public class LoadingScreen : MonoBehaviour
     public Slider loadingSlider;
     public float fakeLoadingSpeed = 0.2f;
     private float progress = 0f;
-    [SerializeField] int sceneNum;
+    [SerializeField] 
+    private string sceneName = "01_MainMenu";
+
     void Awake()
     {
         Time.timeScale = 1f;
@@ -31,6 +33,6 @@ public class LoadingScreen : MonoBehaviour
         }
         Debug.Log(progress);
         progress = 0f;
-        SceneManager.LoadScene(sceneNum);
+        SceneManager.LoadScene(sceneName);
     }
 }
