@@ -4,23 +4,20 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    public int Score { get; private set; }
     public int Health { get; private set; }
 
-    public delegate void ScoreChanged();
-    public event ScoreChanged OnScoreChanged;
-
     [SerializeField]
-    private TMP_Text highscoreText;
-    private int highscore;
-
+    private int SceneNumber = 0;
+    [SerializeField]
+    private GameObject rewardScreen;
     private void Awake()
     {
-        highscore = PlayerPrefs.GetInt("highscore", 0);
         if (Instance == null)
         {
             Instance = this;
@@ -30,13 +27,12 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        UpdateHighscoreText();
+        rewardScreen.SetActive(false);
     }
 
     void Start()
     {
         InitializeGame();
-        UpdateHighscoreText();
     }
 
     void Update()
@@ -46,42 +42,13 @@ public class GameManager : MonoBehaviour
 
     private void InitializeGame()
     {
-        Score = 0;
         Health = 100;
         // Other initialization code
     }
 
     public void AddScore(int points)
     {
-        Score += points;
-        OnScoreChanged?.Invoke();
-        if (highscore < Score)
-        {
-            highscore = Score;
-            highscoreText.text = "High Score: " + highscore.ToString();
 
-        }
-    }
-
-    public void TakeDamage(int damage)
-    {
-        Health -= damage;
-        if (Health <= 0)
-        {
-            GameOver();
-        }
-        // Update health UI here
-    }
-
-    public void CollectPowerUp(PowerUpType powerUpType)
-    {
-        switch (powerUpType)
-        {
-            case PowerUpType.HealthBoost:
-                IncreaseHealth(20);
-                break;
-                // Add other power-up types here
-        }
     }
 
     private void IncreaseHealth(int amount)
@@ -93,35 +60,26 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        if (highscore < Score)
-        {
-            PlayerPrefs.SetInt("highscore", Score);
-        }
-        GetComponent<AudioSource>().Stop();
-        SceneManager.LoadScene(5);
-        UpdateHighscoreText();
+        //togglePopUp
+        rewardScreen.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        
+    }
+    public void Continue()
+    {
+       
+        SceneManager.LoadScene(SceneNumber);
     }
 
     public void Retry()
     {
-        Score = 0;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void WinGame()
     {
         SceneManager.LoadScene(3);
-        UpdateHighscoreText();
     }
 
-    private void UpdateHighscoreText()
-    {
-        highscore = PlayerPrefs.GetInt("highscore", 0);
-        highscoreText.text = "High Score: " + highscore.ToString();
-    }
-
-}
-
-public enum PowerUpType
-{
-    HealthBoost,
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class Crop : MonoBehaviour
     private AudioSource audioSource;
     private HealthBar healthBar;
     private bool tookDamage = false;
+
+ //   public static event Action<CropType> OnCropDestroyed; // Event for notifying destruction of a crop
 
     void Start()
     {
@@ -39,7 +42,7 @@ public class Crop : MonoBehaviour
         currentHealth -= damage;
         PlayDamageSFX();
 
-        if (currentHealth <= 0)
+        if (currentHealth == 0)
         {
             DestroyCrop();
         }
@@ -47,17 +50,19 @@ public class Crop : MonoBehaviour
 
     private void PlayDamageSFX()
     {
-        if (cropType.damageSFX != null)
+        if (cropType.damageSFX != null && audioSource != null)
         {
             audioSource.PlayOneShot(cropType.damageSFX);
         }
     }
 
-    private void DestroyCrop()
+    public void DestroyCrop()
     {
-        GameManager.Instance.AddScore(cropType.scoreValue);
-        if(cropType.destroyedPrefab != null)
+        Debug.Log("Crop Destroyed");
+        ObjectiveManager.Instance.HandleCropDestroyed(cropType);
+        //GameManager.Instance.AddScore(cropType.scoreValue);
+        if (cropType.destroyedPrefab != null)
             Instantiate(cropType.destroyedPrefab, transform.position, Quaternion.identity);
-        Destroy(gameObject,0.5f);
+            Destroy(gameObject,0.1f);
     }
 }

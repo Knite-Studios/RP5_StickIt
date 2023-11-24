@@ -30,7 +30,6 @@ namespace Percy.EnemyVision
         [SerializeField] private Transform attackPos;
         [SerializeField] private float attackSpeed = 2f;
 
-        private bool isAttacking = false;
 
         private Vector3 current_move = Vector3.zero;
         private Vector3 current_face = Vector3.forward;
@@ -66,10 +65,9 @@ namespace Percy.EnemyVision
             if (Input.GetKey(KeyCode.S))
                 move_dir += Vector3.back;
 
-            if (isHiding)
-            {
-                move_dir = Vector3.zero;
-            }
+            
+           
+            
 
             // Move
             move_dir = move_dir.normalized * Mathf.Min(move_dir.magnitude, 1f);
@@ -100,17 +98,19 @@ namespace Percy.EnemyVision
         {
             if (Input.GetKeyDown(hideKey))
             {
-                isHiding = !isHiding;
+                /*isHiding = !isHiding;
                 animator.SetBool("isCrouching", isHiding);
                 if (vision_target)
                     vision_target.visible = !isHiding;
                 if (collide)
-                    collide.enabled = !isHiding;
+                    collide.enabled = !isHiding;*/
+                Debug.Log("bush!!!!!!!!!!!");
             }
 
             if (Input.GetButtonDown("Jump"))
             {
                 Attack();
+                Debug.Log("Attack");
             }
         }
 
@@ -156,6 +156,14 @@ namespace Percy.EnemyVision
             {
                 audioSource.PlayOneShot(clip);  
             }
+        }
+        public void ToggleCrouch()
+        {
+            isHiding = !isHiding;
+            animator.SetBool("isCrouching", isHiding);
+            if (vision_target)
+                vision_target.visible = !isHiding;
+           
         }
     }
 }
