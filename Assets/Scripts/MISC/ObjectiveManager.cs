@@ -14,7 +14,8 @@ public class ObjectiveManager : MonoBehaviour
     private Dictionary<CropType, int> collectiblesCollected = new ();
 
     private int stars = 0;
-    private bool getstars = true;
+    private bool givestar1 = true;
+    private bool givestar2 = true;
     public bool UnlockDoor()
     {
         return ObjectiveCompleted(mainObjectives[0]);
@@ -69,9 +70,10 @@ public class ObjectiveManager : MonoBehaviour
                 if (objective.collectibleType == destroyedCropType)
                 {
                     CheckObjectiveCompletion(objective);
-                    if ((collectiblesCollected[objective.collectibleType] >= (objective.requiredAmount/2)) && getstars)
+                    if ((collectiblesCollected[objective.collectibleType] >= (objective.requiredAmount/2)) && givestar1)
                     {
                         stars++;
+                        givestar1 = false;
                     }
                     UpdateObjectiveText();
                     break;
@@ -84,7 +86,12 @@ public class ObjectiveManager : MonoBehaviour
     {
         if (collectiblesCollected[objective.collectibleType] >= objective.requiredAmount)
         {
-            stars++;
+            if (givestar2)
+            {
+                stars++;
+                givestar2 = false;
+            }
+            
             // Objective completed
             Debug.Log($"Objective completed: Gathered {objective.requiredAmount} {objective.collectibleType.name}");
 
