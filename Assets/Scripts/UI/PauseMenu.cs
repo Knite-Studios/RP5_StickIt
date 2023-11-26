@@ -10,8 +10,9 @@ public class PauseMenu : MonoBehaviour
     private GameObject pauseMenu;
     [SerializeField]
     private GameObject muteIcon;
-    [SerializeField]
-    private GameObject settings;
+
+    [Header("QUITING"),SerializeField]
+    private string QuitTo = "03_Loading";
 
     private bool isMuted = false;
     private bool settingIsOn = false;
@@ -56,12 +57,7 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(0);
-    }
-    public void ToggleSettings()
-    {
-        settingIsOn = !settingIsOn;
-        settings.SetActive(settingIsOn);
+        SceneManager.LoadScene(QuitTo);
     }
     public void ToggleMute()
     {
