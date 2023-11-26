@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,18 +6,28 @@ public class SplashScreen : MonoBehaviour
 {
     [SerializeField]
     private string sceneName = "03_Loading";
+    [SerializeField]
+    private Animator fadeAnimator; // Reference to the Animator component
+    [SerializeField]
+    private float fadeDuration = .30f; // Duration of the fade effect
 
     public void LoadScene()
     {
-      SceneManager.LoadScene(sceneName);
+        StartCoroutine(LoadSceneAfterFade());
     }
-    // Update is called once per frame
+
+    IEnumerator LoadSceneAfterFade()
+    {
+        fadeAnimator.SetTrigger("Start"); // Assuming "Start" is the trigger for your animation
+        yield return new WaitForSeconds(fadeDuration);
+        SceneManager.LoadScene(sceneName);
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
             LoadScene(); 
         }
-
     }
 }
