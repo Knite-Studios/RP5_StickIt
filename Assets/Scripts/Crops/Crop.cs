@@ -59,7 +59,11 @@ public class Crop : MonoBehaviour
     public void DestroyCrop()
     {
         Debug.Log("Crop Destroyed");
-        ObjectiveManager.Instance.HandleCropDestroyed(cropType);
+        if (ObjectiveManager.Instance != null && audioSource != null)
+        {
+            ObjectiveManager.Instance.HandleCropDestroyed(cropType);
+        }   
+        
         //GameManager.Instance.AddScore(cropType.scoreValue);
         if (cropType.destroyedPrefab != null)
             Instantiate(cropType.destroyedPrefab, transform.position, Quaternion.identity);

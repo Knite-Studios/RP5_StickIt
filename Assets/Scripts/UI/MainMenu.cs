@@ -12,7 +12,8 @@ public class MainMenu : MonoBehaviour
     private GameObject muteIcon;
     [SerializeField]
     private GameObject settings;
-
+    [SerializeField]
+    private string sceneName = "03_Loading";
     private bool isMuted = false;
     private bool settingIsOn = false;
 
@@ -58,7 +59,7 @@ public class MainMenu : MonoBehaviour
     }
     public void Play()
     {
-        SceneManager.LoadScene("Loading");
+        SceneManager.LoadScene(sceneName);
     }
     public void Quit()
     {
