@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 23963026499939696}
   - component: {fileID: 1424261235851963766}
   - component: {fileID: 7004777723827063711}
+  - component: {fileID: 1065711432211140180}
   m_Layer: 0
   m_Name: SM_Bld_Farmhouse_01
   m_TagString: Untagged
@@ -202,6 +203,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 4.723, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &1065711432211140180
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572243783172642}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 13.454839, y: 9.824267, z: 10.951507}
+  m_Center: {x: 0, y: 4.7227244, z: 0.000015258789}
 --- !u!1 &1875201363225048
 GameObject:
   m_ObjectHideFlags: 0
