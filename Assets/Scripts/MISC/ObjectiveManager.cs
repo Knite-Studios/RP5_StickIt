@@ -42,7 +42,14 @@ public class ObjectiveManager : MonoBehaviour
 
     private void InitializeCollectibles()
     {
+        if(mainObjective.collectibleType == null)
+            Debug.LogError("Main objective collectible type is null!");
+        else
         collectiblesCollected.Add(mainObjective.collectibleType, 0);
+
+        if(sideObjective.collectibleType == null)
+            Debug.LogError("Side objective collectible type is null!");
+        else
         collectiblesCollected.Add(sideObjective.collectibleType, 0);
     }
 

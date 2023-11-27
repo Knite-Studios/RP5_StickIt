@@ -52,7 +52,7 @@ namespace Percy.EnemyVision
         {
             enemy_list.Add(this);
             enemy = GetComponent<Enemy>();
-            if(enemy != null)
+            if (enemy != null)
                 enemy.onDeath += OnDeath;
         }
 
@@ -85,7 +85,7 @@ namespace Percy.EnemyVision
             if (enemy == null)
                 DetectVisionTargetOnly();
 
-            if(enemy == null || enemy.IsPaused())
+            if (enemy == null || enemy.IsPaused())
                 return;
 
             wait_timer -= Time.deltaTime;
@@ -95,7 +95,7 @@ namespace Percy.EnemyVision
             {
                 DetectVisionTarget();
 
-                if(group_detect)
+                if (group_detect)
                     DetectOtherEnemies();
             }
 
@@ -123,7 +123,7 @@ namespace Percy.EnemyVision
                     Chase(target_seen);
 
                     if (onDetectTarget != null)
-                        onDetectTarget.Invoke(target_seen, 2); 
+                        onDetectTarget.Invoke(target_seen, 2);
                 }
 
                 if (target_seen != null && enemy.GetStateTimer() > 0.2f && CanSeeVisionTargetNear(target_seen))
@@ -165,14 +165,12 @@ namespace Percy.EnemyVision
                 if (enemy.HasReachedTarget() && !can_see_target) //If reached target and cant see, will go back to patrol
                     enemy.ChangeState(EnemyState.Confused);
 
-                if(seen_character == null)
+                if (seen_character == null)
                     enemy.ChangeState(EnemyState.Confused);
-
-                // Check for touch
-                if (CanTouchObject(seen_character.gameObject))
+                else if (CanTouchObject(seen_character.gameObject))
                 {
                     GameManager.Instance.GameOver(); // Trigger game over
-                }            
+                }
             }
 
             //After the chase, if VisionTarget is unseen, enemy will be confused
@@ -295,7 +293,7 @@ namespace Percy.EnemyVision
         {
             foreach (VisionTarget character in VisionTarget.GetAll())
             {
-                if(CanSeeVisionTarget(character))
+                if (CanSeeVisionTarget(character))
                 {
                     return character;
                 }
@@ -306,7 +304,7 @@ namespace Percy.EnemyVision
         //Can the enemy see a vision target?
         public bool CanSeeVisionTarget(VisionTarget target)
         {
-            return target != null && target.CanBeSeen() 
+            return target != null && target.CanBeSeen()
                 && (CanSeeObject(target.gameObject, vision_range, vision_angle) || CanTouchObject(target.gameObject));
         }
 
@@ -370,7 +368,7 @@ namespace Percy.EnemyVision
         //Alert with a position instead of object (such as noise)
         public void Alert(Vector3 target)
         {
-            if(enemy != null)
+            if (enemy != null)
                 enemy.Alert(target);
             vision_timer = 0f;
 
@@ -385,7 +383,7 @@ namespace Percy.EnemyVision
             {
                 seen_character = target;
                 vision_timer = 0f;
-                if(enemy != null)
+                if (enemy != null)
                     enemy.Follow(seen_character.gameObject);
             }
         }
@@ -439,7 +437,7 @@ namespace Percy.EnemyVision
 
         private void OnDeath()
         {
-            if(vision)
+            if (vision)
                 vision.gameObject.SetActive(false);
 
             if (onDeath != null)
