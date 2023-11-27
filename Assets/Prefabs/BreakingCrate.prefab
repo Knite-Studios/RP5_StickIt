@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3198347258031793141}
   - component: {fileID: 6541664641541260140}
   - component: {fileID: 5558209462426465833}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BreakingCrate
   m_TagString: Crop
   m_Icon: {fileID: 0}
@@ -68,7 +68,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: fdf18c58b725a2f469593ece1786d307, type: 2}
-  - {fileID: 2100000, guid: 57ca3328d02f3b9459f4678e47bf7fe7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -257,6 +256,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBarCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1760143611499745129, guid: ff42018361abdfa4f85a5af15ca32a70, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1760143611499745130, guid: ff42018361abdfa4f85a5af15ca32a70, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -341,6 +344,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8968296561147047855, guid: ff42018361abdfa4f85a5af15ca32a70, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8968296561362987326, guid: ff42018361abdfa4f85a5af15ca32a70, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -348,6 +355,10 @@ PrefabInstance:
     - target: {fileID: 8968296561362987326, guid: ff42018361abdfa4f85a5af15ca32a70, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968296561362987327, guid: ff42018361abdfa4f85a5af15ca32a70, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff42018361abdfa4f85a5af15ca32a70, type: 3}
