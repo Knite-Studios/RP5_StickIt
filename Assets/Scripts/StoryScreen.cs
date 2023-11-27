@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(BoxCollider))]
 public class StoryScreen : MonoBehaviour
 {
     [SerializeField]
@@ -11,14 +11,16 @@ public class StoryScreen : MonoBehaviour
 
     void Start()
     {
-        storyScreen.SetActive(false);
+        if (storyScreen != null)
+            storyScreen.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !isTriggered)
         {
-            storyScreen.SetActive(true);
+            if (storyScreen != null)
+                storyScreen.SetActive(true);
             Time.timeScale = 0f;
             isTriggered = true;
             GameManager.Instance.canPause = false;
@@ -32,7 +34,8 @@ public class StoryScreen : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 Time.timeScale = 1f;
-                storyScreen.SetActive(false);
+                if (storyScreen != null)
+                    storyScreen.SetActive(false);
                 GetComponent<Collider>().enabled = false;
                 isTriggered = false;
                 GameManager.Instance.canPause = true;
