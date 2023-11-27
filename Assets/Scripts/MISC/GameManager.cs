@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     private GameObject rewardScreen;
     [Header("Star System"),SerializeField]
     private GameObject[] stars;
+
+    public bool canPause = true;
     private void Awake()
     {
         if (Instance == null)
@@ -48,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
+        canPause = false;
         rewardScreen.SetActive(true);
         ToggleStars();
         Cursor.visible = true;

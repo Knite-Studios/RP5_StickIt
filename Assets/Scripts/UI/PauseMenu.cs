@@ -15,7 +15,6 @@ public class PauseMenu : MonoBehaviour
     private string QuitTo = "03_Loading";
 
     private bool isMuted = false;
-    private bool settingIsOn = false;
 
     AudioSource _menuSpeaker;
     private void Awake()
@@ -70,7 +69,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && GameManager.Instance.canPause)
         {
             if (!paused)
                 Pause();
