@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33355966735586834}
   - component: {fileID: 23578588097928640}
   - component: {fileID: 3297185030704064563}
+  - component: {fileID: 3173493414619384803}
   m_Layer: 0
   m_Name: SM_Veh_Harvester_01
   m_TagString: Untagged
@@ -103,8 +104,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.018512, y: 3.7487817, z: 8.120655}
-  m_Center: {x: -0.044011503, y: 1.953948, z: -0.000022888184}
+  m_Size: {x: 2.7530775, y: 3.7487817, z: 6.239404}
+  m_Center: {x: 0.02168941, y: 1.953948, z: -0.8765717}
+--- !u!65 &3173493414619384803
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018580832300568}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.018512, y: 3.7487817, z: 1.928235}
+  m_Center: {x: -0.04401366, y: 1.953948, z: 3.0961878}
 --- !u!1 &1032150980146974
 GameObject:
   m_ObjectHideFlags: 0

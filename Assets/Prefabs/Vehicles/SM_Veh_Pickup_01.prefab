@@ -566,6 +566,7 @@ GameObject:
   - component: {fileID: 33148800981090458}
   - component: {fileID: 23549281800011234}
   - component: {fileID: 4765522680222389464}
+  - component: {fileID: 4403531766670641422}
   m_Layer: 0
   m_Name: SM_Veh_Pickup_01
   m_TagString: Untagged
@@ -657,3 +658,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+--- !u!65 &4403531766670641422
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858355190577810}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.3028867, y: 1.674395, z: 5.6751037}
+  m_Center: {x: 0.000011444092, y: 1.0132678, z: -0.08719089}

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5274333461436445674}
   - component: {fileID: 6333897351160503218}
   - component: {fileID: -7251026301554040681}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TomatoCrop
   m_TagString: Crop
   m_Icon: {fileID: 0}
@@ -240,6 +240,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBarCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1760143611499745129, guid: ff42018361abdfa4f85a5af15ca32a70, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1760143611499745130, guid: ff42018361abdfa4f85a5af15ca32a70, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -324,6 +328,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8968296561147047855, guid: ff42018361abdfa4f85a5af15ca32a70, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8968296561362987326, guid: ff42018361abdfa4f85a5af15ca32a70, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -331,6 +339,10 @@ PrefabInstance:
     - target: {fileID: 8968296561362987326, guid: ff42018361abdfa4f85a5af15ca32a70, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968296561362987327, guid: ff42018361abdfa4f85a5af15ca32a70, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff42018361abdfa4f85a5af15ca32a70, type: 3}

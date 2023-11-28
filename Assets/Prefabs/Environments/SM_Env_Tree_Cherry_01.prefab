@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4941073105388382}
   - component: {fileID: 33586697591282278}
   - component: {fileID: 23383258103480466}
-  - component: {fileID: 8342606145568444259}
+  - component: {fileID: 7156566507277831626}
   m_Layer: 0
   m_Name: SM_Env_Tree_Cherry_01
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8342606145568444259
+--- !u!65 &7156566507277831626
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,5 +95,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.4718735, y: 4.343829, z: 1.8278748}
-  m_Center: {x: -0.14136097, y: 1.9787087, z: -0.02669982}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.31, z: 0}
