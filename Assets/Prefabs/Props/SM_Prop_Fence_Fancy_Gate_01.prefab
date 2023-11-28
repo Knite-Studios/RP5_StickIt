@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4139386580268372}
   - component: {fileID: 33798031682091680}
   - component: {fileID: 23005428556885778}
+  - component: {fileID: 6409436558285858408}
+  - component: {fileID: 4471177351141430803}
   m_Layer: 0
   m_Name: SM_Prop_Fence_Fancy_Gate_01
   m_TagString: Untagged
@@ -85,6 +87,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6409436558285858408
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057578451854958}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.490477, y: 1.8868942, z: 0.21453251}
+  m_Center: {x: -3.7547479, y: 0.60534453, z: 0.023131952}
+--- !u!64 &4471177351141430803
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057578451854958}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: b14bc43620657b14f879e2df0e5ba885, type: 3}
 --- !u!1 &1363426707307816
 GameObject:
   m_ObjectHideFlags: 0

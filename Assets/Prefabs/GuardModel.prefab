@@ -1170,7 +1170,7 @@ GameObject:
   - component: {fileID: 95672999797837872}
   - component: {fileID: -2340399273306387070}
   m_Layer: 0
-  m_Name: Guard
+  m_Name: GuardModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
