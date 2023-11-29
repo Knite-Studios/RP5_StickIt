@@ -90,7 +90,7 @@ public class ObjectiveManager : MonoBehaviour
     }
     private void CheckSideObjectiveHalf(Objective objective, ref bool giveStar)
     {
-        if ((collectiblesCollected[objective.collectibleType] >= (objective.requiredAmount)/2))
+        if ((collectiblesCollected[objective.collectibleType] >= (float)objective.requiredAmount/2.0f))
         {
             if (giveStar)
             {
