@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a7e5f7e3e56e0f49b559a403372c654, type: 3}
-  m_Name: CarrotCrate
+  m_Name: Potato
   m_EditorClassIdentifier: 
   healthPoints: 10
   scoreValue: 1
