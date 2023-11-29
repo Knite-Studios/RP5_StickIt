@@ -26056,11 +26056,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainObjective:
-    collectibleType: {fileID: 11400000, guid: 15fee3386f3f043418a547899740167c, type: 2}
-    requiredAmount: 6
-  sideObjective:
-    collectibleType: {fileID: 11400000, guid: 21eb2980c075c374a97570af652a1c86, type: 2}
+    collectibleType: {fileID: 11400000, guid: 3852ceccfe0df534ba5aacb88e419127, type: 2}
     requiredAmount: 1
+  sideObjective:
+    collectibleType: {fileID: 11400000, guid: 15fee3386f3f043418a547899740167c, type: 2}
+    requiredAmount: 8
   mainObjectiveText: {fileID: 1805107723}
   sideObjectiveText: {fileID: 652052332}
   CheckBoxMainMenu: {fileID: 13674121}

@@ -25920,11 +25920,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainObjective:
-    collectibleType: {fileID: 11400000, guid: 2a684837883180645a126ed264cecfef, type: 2}
-    requiredAmount: 1
-  sideObjective:
     collectibleType: {fileID: 11400000, guid: 21eb2980c075c374a97570af652a1c86, type: 2}
     requiredAmount: 1
+  sideObjective:
+    collectibleType: {fileID: 11400000, guid: 1abf66ad20446374082a1d76db2e67c1, type: 2}
+    requiredAmount: 3
   mainObjectiveText: {fileID: 582969993}
   sideObjectiveText: {fileID: 582969992}
   CheckBoxMainMenu: {fileID: 582969991}
@@ -72421,7 +72421,7 @@ PrefabInstance:
     - target: {fileID: 220815812149090255, guid: 89d45cc3f8c15c447ba542f5cfd3461f, type: 3}
       propertyPath: cropType
       value: 
-      objectReference: {fileID: 11400000, guid: 2a684837883180645a126ed264cecfef, type: 2}
+      objectReference: {fileID: 11400000, guid: 1abf66ad20446374082a1d76db2e67c1, type: 2}
     - target: {fileID: 1088167480758226662, guid: 89d45cc3f8c15c447ba542f5cfd3461f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

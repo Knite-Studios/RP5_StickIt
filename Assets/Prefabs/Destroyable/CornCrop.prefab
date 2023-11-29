@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a536c13aedf3cb84db298e389db03d8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cropType: {fileID: 11400000, guid: 2a684837883180645a126ed264cecfef, type: 2}
+  cropType: {fileID: 11400000, guid: 1abf66ad20446374082a1d76db2e67c1, type: 2}
 --- !u!65 &8343300913439320101
 BoxCollider:
   m_ObjectHideFlags: 0
