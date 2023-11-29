@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1902832132}
-  m_IndirectSpecularColor: {r: 0.18325375, g: 0.22693777, b: 0.29499176, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -812,6 +812,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1777816604}
     m_Modifications:
+    - target: {fileID: 1211618609669284588, guid: ccc12316d8fa111458153474448bd12e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4639006674233904870, guid: ccc12316d8fa111458153474448bd12e, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -895,6 +899,10 @@ PrefabInstance:
     - target: {fileID: 4748611405469269890, guid: ccc12316d8fa111458153474448bd12e, type: 3}
       propertyPath: vision_near_range
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929953802751913618, guid: ccc12316d8fa111458153474448bd12e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc12316d8fa111458153474448bd12e, type: 3}
@@ -31569,6 +31577,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1777816604}
     m_Modifications:
+    - target: {fileID: 1211618609669284588, guid: ccc12316d8fa111458153474448bd12e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761322049837248069, guid: ccc12316d8fa111458153474448bd12e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4639006674233904870, guid: ccc12316d8fa111458153474448bd12e, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -34026,6 +34042,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1777816604}
     m_Modifications:
+    - target: {fileID: 1211618609669284588, guid: ccc12316d8fa111458153474448bd12e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4639006674233904870, guid: ccc12316d8fa111458153474448bd12e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -34105,6 +34125,10 @@ PrefabInstance:
     - target: {fileID: 4748611405469269890, guid: ccc12316d8fa111458153474448bd12e, type: 3}
       propertyPath: vision_near_range
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956967512539346356, guid: ccc12316d8fa111458153474448bd12e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc12316d8fa111458153474448bd12e, type: 3}
