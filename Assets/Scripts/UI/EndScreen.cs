@@ -1,18 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
 public class EndScreen : MonoBehaviour
 {
-    public void QuitGame()
+    [SerializeField]
+    private string SceneName = "05_Level1";
+
+    public void PlayAgain()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneName);
     }
     public void RestartGame()
     {
-       SceneManager.LoadScene(1);
+        SceneManager.LoadScene(1);
+    }
+    public void ExitGame()
+    {
+    
+        Application.Quit();
+#if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#endif
     }
 
     void Start()

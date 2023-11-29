@@ -622,7 +622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingSlider: {fileID: 1321780662}
   fakeLoadingSpeed: 0.2
-  sceneName: 06_Level2
+  sceneName: 07_Level3
 --- !u!114 &1516811853
 MonoBehaviour:
   m_ObjectHideFlags: 0

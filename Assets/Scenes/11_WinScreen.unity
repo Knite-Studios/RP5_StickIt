@@ -9364,6 +9364,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8668904749507541921, guid: da283f0d045b74b5eb224689aaebcf66, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8668904749507541921, guid: da283f0d045b74b5eb224689aaebcf66, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da283f0d045b74b5eb224689aaebcf66, type: 3}
 --- !u!1 &725867237 stripped
@@ -18339,7 +18347,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 180119568}
         m_TargetAssemblyTypeName: EndScreen, Assembly-CSharp
-        m_MethodName: QuitGame
+        m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

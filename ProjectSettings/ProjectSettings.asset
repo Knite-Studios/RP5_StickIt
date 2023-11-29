@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: Knite Studios
   productName: StickIt
-  defaultCursor: {fileID: 0}
+  defaultCursor: {fileID: 2800000, guid: 287c742d855a3364a9988af60c73b7e8, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.12967247, g: 0.36670747, b: 0.8867924, a: 1}
   m_ShowUnitySplashScreen: 1

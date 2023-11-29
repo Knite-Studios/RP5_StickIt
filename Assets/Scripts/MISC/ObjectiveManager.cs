@@ -106,7 +106,7 @@ public class ObjectiveManager : MonoBehaviour
         {
             if (collectiblesCollected[mainObjective.collectibleType] >= mainObjective.requiredAmount)
             {
-                mainObjectiveText.color = Color.green;
+               // mainObjectiveText.color = Color.green;
                 mainObjectiveText.text = $"{mainObjective.collectibleType.name}\n";
                 if (CheckBoxMainMenu != null)
                     CheckBoxMainMenu.SetActive(true);
@@ -126,7 +126,7 @@ public class ObjectiveManager : MonoBehaviour
             if (collectiblesCollected[sideObjective.collectibleType] >= sideObjective.requiredAmount)
             {
 
-                sideObjectiveText.color = Color.green;
+               // sideObjectiveText.color = Color.green;
                 sideObjectiveText.text = $"{sideObjective.collectibleType.name}\n";
                 if (CheckBoxSideMenu != null)
                     CheckBoxSideMenu.SetActive(true);
@@ -149,7 +149,7 @@ public class ObjectiveManager : MonoBehaviour
         int collectedAmount = collectiblesCollected[objective.collectibleType];
         int requiredAmount = objective.requiredAmount - collectedAmount; 
 
-        textMesh.text = $"{collectibleName}: {requiredAmount}\n";
+        textMesh.text = $"{collectibleName} - {requiredAmount}\n";
         
     }
 
