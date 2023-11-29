@@ -10,6 +10,8 @@ public class ObjectiveManager : MonoBehaviour
     public Objective sideObjective;
     public TextMeshProUGUI mainObjectiveText; // Reference to the TextMeshPro field for main objectives
     public TextMeshProUGUI sideObjectiveText; // Reference to the TextMeshPro field for side objectives
+    public GameObject CheckBoxMainMenu;
+    public GameObject CheckBoxSideMenu;
 
     private Dictionary<CropType, int> collectiblesCollected = new ();
 
@@ -34,6 +36,19 @@ public class ObjectiveManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        if(CheckBoxMainMenu != null)
+        {
+            CheckBoxMainMenu.SetActive(false);
+        }
+        if(CheckBoxSideMenu != null)
+        {
+            CheckBoxSideMenu.SetActive(false);
+        }
         Instance = this;
         InitializeCollectibles();
         UpdateObjectiveText();
@@ -89,7 +104,17 @@ public class ObjectiveManager : MonoBehaviour
     {
         if (ObjectiveCompleted(mainObjective))
         {
-            mainObjectiveText.text = "Main objective completed!";
+            if (collectiblesCollected[mainObjective.collectibleType] >= mainObjective.requiredAmount)
+            {
+                mainObjectiveText.color = Color.green;
+                mainObjectiveText.text = $"{mainObjective.collectibleType.name}\n";
+                if (CheckBoxMainMenu != null)
+                    CheckBoxMainMenu.SetActive(true);
+            }
+            else
+            {
+                UpdateTextForObjective(mainObjective, mainObjectiveText);
+            }
         }
         else
         {
@@ -98,7 +123,18 @@ public class ObjectiveManager : MonoBehaviour
 
         if (ObjectiveCompleted(sideObjective))
         {
-            sideObjectiveText.text = "Side objective completed!";
+            if (collectiblesCollected[sideObjective.collectibleType] >= sideObjective.requiredAmount)
+            {
+
+                sideObjectiveText.color = Color.green;
+                sideObjectiveText.text = $"{sideObjective.collectibleType.name}\n";
+                if (CheckBoxSideMenu != null)
+                    CheckBoxSideMenu.SetActive(true);
+            }
+            else
+            {
+                UpdateTextForObjective(sideObjective, sideObjectiveText);
+            }
         }
         else
         {
@@ -106,13 +142,17 @@ public class ObjectiveManager : MonoBehaviour
         }
     }
 
+
     private void UpdateTextForObjective(Objective objective, TextMeshProUGUI textMesh)
     {
         string collectibleName = objective.collectibleType.name;
         int collectedAmount = collectiblesCollected[objective.collectibleType];
-        int requiredAmount = objective.requiredAmount;
-        textMesh.text = $"{collectibleName}: {collectedAmount}/{requiredAmount}\n";
+        int requiredAmount = objective.requiredAmount - collectedAmount; 
+
+        textMesh.text = $"{collectibleName}: {requiredAmount}\n";
+        
     }
+
 
     public int StarCount()
     {

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33393258345764940}
   - component: {fileID: 23756251149608204}
   - component: {fileID: 2530007532031707936}
+  - component: {fileID: 7415459173639981979}
   m_Layer: 0
   m_Name: SM_Prop_Fence_Wire_02
   m_TagString: Untagged
@@ -97,3 +98,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.323575, y: 1.3708553, z: 0.16806339}
   m_Center: {x: -2.5470219, y: 0.7103758, z: 0.046524066}
+--- !u!208 &7415459173639981979
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974500447329134}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.815, y: 0.611, z: 0.08400001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -2.5, y: 0.77, z: 0.047000002}
+  m_TimeToStationary: 0.5
