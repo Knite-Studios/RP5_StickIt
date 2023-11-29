@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a7e5f7e3e56e0f49b559a403372c654, type: 3}
+  m_Name: CucumberCrate
+  m_EditorClassIdentifier: 
+  healthPoints: 10
+  scoreValue: 1
+  damageSFX: {fileID: 8300000, guid: ff2aefdda04f5ea4eb881315b0c8588d, type: 3}
+  destroyedPrefab: {fileID: 1761897014483931604, guid: f3a772a51e9600d4fa80ce3589238b72, type: 3}
