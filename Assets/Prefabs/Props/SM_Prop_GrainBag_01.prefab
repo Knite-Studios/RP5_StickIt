@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33636024618461290}
   - component: {fileID: 23266091449006110}
   - component: {fileID: 11359406969240286}
+  - component: {fileID: 7554923016744514090}
   m_Layer: 0
   m_Name: SM_Prop_GrainBag_01
   m_TagString: Untagged
@@ -97,3 +98,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8450197, y: 0.3199372, z: 0.5724592}
   m_Center: {x: 0, y: 0.0052880724, z: 0.0000006109478}
+--- !u!208 &7554923016744514090
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107966151381520}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.423, y: 0.16000001, z: 0.286}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.0050000004, z: 0}
+  m_TimeToStationary: 0.5

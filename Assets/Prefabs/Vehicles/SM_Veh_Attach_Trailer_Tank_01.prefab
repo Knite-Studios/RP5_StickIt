@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 33892973806380646}
   - component: {fileID: 23004482167475718}
   - component: {fileID: 8277067012809572256}
+  - component: {fileID: 8954073847216335538}
   m_Layer: 0
   m_Name: SM_Veh_Attach_Trailer_Tank_01
   m_TagString: Untagged
@@ -184,6 +185,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.3515801, y: 1.8530022, z: 6.0694485}
   m_Center: {x: -0.0000075101852, y: 1.117213, z: -2.9505281}
+--- !u!208 &8954073847216335538
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369452303015908}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.176, y: 0.92700005, z: 3.035}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.1170001, z: -2.9510002}
+  m_TimeToStationary: 0.5
 --- !u!1 &1565273537394184
 GameObject:
   m_ObjectHideFlags: 0
