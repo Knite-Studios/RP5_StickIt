@@ -1467,7 +1467,7 @@ MonoBehaviour:
   touch_range: 1
   vision_mask:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 832
   group_detect: 1
   detect_time: 0.5
   confused_time: 10
