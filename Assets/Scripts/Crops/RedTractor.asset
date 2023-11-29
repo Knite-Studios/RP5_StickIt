@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a7e5f7e3e56e0f49b559a403372c654, type: 3}
   m_Name: RedTractor
   m_EditorClassIdentifier: 
-  healthPoints: 0
-  scoreValue: 0
-  damageSFX: {fileID: 0}
-  destroyedPrefab: {fileID: 0}
+  healthPoints: 20
+  scoreValue: 1
+  damageSFX: {fileID: 8300000, guid: f5a4406962939be4aa1838203575ae25, type: 3}
+  destroyedPrefab: {fileID: 1761897014483931604, guid: f3a772a51e9600d4fa80ce3589238b72, type: 3}
