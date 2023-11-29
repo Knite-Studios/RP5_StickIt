@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a7e5f7e3e56e0f49b559a403372c654, type: 3}
-  m_Name: RedTractor
+  m_Name: Hay
   m_EditorClassIdentifier: 
-  healthPoints: 20
+  healthPoints: 10
   scoreValue: 1
-  damageSFX: {fileID: 8300000, guid: f5a4406962939be4aa1838203575ae25, type: 3}
+  damageSFX: {fileID: 8300000, guid: b84153c6086240f44994e42a1f912cfc, type: 3}
   destroyedPrefab: {fileID: 1761897014483931604, guid: f3a772a51e9600d4fa80ce3589238b72, type: 3}
