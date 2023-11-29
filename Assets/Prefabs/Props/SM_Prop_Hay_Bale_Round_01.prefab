@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33807907012638690}
   - component: {fileID: 23909265799614036}
   - component: {fileID: 7806686733445718035}
+  - component: {fileID: 9064425411384566664}
   m_Layer: 0
   m_Name: SM_Prop_Hay_Bale_Round_01
   m_TagString: Untagged
@@ -97,3 +98,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2622538, y: 1.5820062, z: 1.218853}
   m_Center: {x: 0.000030487776, y: -0.000000029802322, z: 0.0000076293945}
+--- !u!208 &9064425411384566664
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696853984970666}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.63100004, y: 0.791, z: 0.609}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
