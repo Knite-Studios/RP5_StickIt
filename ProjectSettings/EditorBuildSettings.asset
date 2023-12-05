@@ -50,4 +50,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoadingToLVL3.unity
     guid: eb458a512e589194f8c00f2417b110cd
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 3ea9a1dc7554d104f96ed20aa31da8fd, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 7bb755d379d02d54e898316c27e1e198, type: 2}
